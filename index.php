@@ -33,6 +33,34 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 14px 38px rgba(73, 95, 210, 0.12);
       padding: 10px 18px;
+      position: sticky;
+      top: 10px;
+      z-index: 1040;
+      width: 100%;
+      transition: top .45s cubic-bezier(.22, 1, .36, 1),
+                  border-radius .45s cubic-bezier(.22, 1, .36, 1),
+                  margin-top .45s cubic-bezier(.22, 1, .36, 1),
+                  padding .45s cubic-bezier(.22, 1, .36, 1),
+                  box-shadow .45s cubic-bezier(.22, 1, .36, 1),
+                  border-color .45s cubic-bezier(.22, 1, .36, 1),
+                  background .45s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .navbar-wrap.is-compact {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin-top: 0;
+      border-radius: 0;
+      border-color: rgba(126, 145, 255, 0.18);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 30px rgba(30, 44, 122, 0.14);
+      padding: 8px clamp(14px, 2.4vw, 32px);
+    }
+
+    body.header-stuck {
+      padding-top: var(--sticky-nav-offset, 0px);
     }
 
     .navbar {
@@ -609,5 +637,38 @@
   </div>
 
   <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (() => {
+      const navWrap = document.querySelector('.navbar-wrap');
+      if (!navWrap) return;
+
+      let ticking = false;
+
+      const syncStickyState = () => {
+        const shouldStick = window.scrollY > 36;
+        navWrap.classList.toggle('is-compact', shouldStick);
+
+        if (shouldStick) {
+          document.body.style.setProperty('--sticky-nav-offset', `${navWrap.offsetHeight + 10}px`);
+          document.body.classList.add('header-stuck');
+        } else {
+          document.body.style.setProperty('--sticky-nav-offset', '0px');
+          document.body.classList.remove('header-stuck');
+        }
+
+        ticking = false;
+      };
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(syncStickyState);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', syncStickyState);
+      syncStickyState();
+    })();
+  </script>
 </body>
 </html>
