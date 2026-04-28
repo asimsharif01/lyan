@@ -303,33 +303,32 @@
 
     .what-we-do-track-wrap {
       position: relative;
-      overflow-x: clip;
-    }
-
-    .what-we-do-scroll-zone {
-      position: relative;
-      height: auto;
-    }
-
-    .what-we-do-sticky {
-      position: static;
+      overflow: hidden;
     }
 
     .what-we-do-track {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
       gap: 16px;
-      overflow: hidden;
+      overflow-x: auto;
       padding: 10px clamp(18px, 7vw, 48px) 12px;
-      transform: none !important;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
     }
 
     .what-we-do-track::-webkit-scrollbar {
       display: none;
     }
 
-    .what-we-do-card {
+    .what-we-do-panel {
+      flex: 0 0 min(980px, 86vw);
       scroll-snap-align: start;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .what-we-do-card {
       border-radius: 18px;
       min-height: 240px;
       background: #f5f5f7;
@@ -340,6 +339,28 @@
       flex-direction: column;
       justify-content: flex-start;
       color: #1d1d1f;
+    }
+
+    .what-we-do-card.wide {
+      min-height: 496px;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .what-we-do-visual {
+      margin-top: 16px;
+      border-radius: 14px;
+      min-height: 220px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .what-we-do-visual.specialist {
+      background-image: linear-gradient(180deg, rgba(237,237,242,0) 30%, rgba(237,237,242,.85)), url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80');
+    }
+
+    .what-we-do-visual.video {
+      background-image: linear-gradient(180deg, rgba(237,237,242,0) 30%, rgba(237,237,242,.85)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80');
     }
 
     .what-we-do-icon {
@@ -377,7 +398,16 @@
     .tone-blue { color: #0066cc; }
 
     .scroll-cursor {
-      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
     }
 
     .scroll-cursor:hover {
@@ -385,16 +415,27 @@
     }
 
     .scroll-cursor:disabled {
-      opacity: 0;
-      pointer-events: none;
+      opacity: .35;
+      cursor: not-allowed;
     }
 
     .scroll-cursor.left {
-      left: -10px;
+      left: 8px;
     }
 
     .scroll-cursor.right {
-      right: -10px;
+      right: 8px;
+    }
+
+    .what-we-do-slider {
+      max-width: min(980px, 86vw);
+      margin: 6px auto 0;
+      padding: 0 4px 10px;
+    }
+
+    .what-we-do-slider input[type="range"] {
+      width: 100%;
+      accent-color: #111111;
     }
 
     .dark-dashboard {
@@ -494,18 +535,13 @@
         display: none;
       }
 
-      .what-we-do-track {
+      .what-we-do-panel {
+        flex-basis: 100%;
         grid-template-columns: 1fr;
-        overflow: hidden;
-        padding-inline: 14px;
       }
 
-      .what-we-do-scroll-zone {
-        height: auto !important;
-      }
-
-      .what-we-do-sticky {
-        position: static;
+      .what-we-do-card.wide {
+        min-height: 340px;
       }
     }
   </style>
@@ -613,37 +649,67 @@
           </div>
         </div>
       </div>
-      <div class="what-we-do-track-wrap what-we-do-scroll-zone" data-what-we-do-scroll-zone>
-        <div class="what-we-do-sticky">
+      <div class="what-we-do-track-wrap">
         <button class="scroll-cursor left" type="button" aria-label="Scroll left" data-scroll-left>←</button>
         <div class="what-we-do-track" data-what-we-do-track>
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon tone-teal">🎓</div>
-            <p><span class="tone-teal">Save with special pricing</span> for college students and educators.</p>
-          </article>
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon tone-green">🖥</div>
-            <p><span class="tone-green">Customize your Mac</span> with chip, memory, storage, and color.</p>
-          </article>
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon tone-violet">☺</div>
-            <p>Make them yours. <span class="tone-violet">Engrave a mix of emoji, names, and numbers for free.</span></p>
-          </article>
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon tone-blue">⇄</div>
-            <p><span class="tone-blue">Trade in your current device.</span> Get credit toward a new one.</p>
-          </article>
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon tone-green">💳</div>
-            <p>Pay in full or <span class="tone-green">pay over time.</span> Your choice.</p>
-          </article>
-          <article class="what-we-do-card">
-            <div class="what-we-do-icon tone-green">⌚</div>
-            <p><span class="tone-green">Choose a case. Pick a band.</span> Make an Apple Watch just for you.</p>
-          </article>
+          <div class="what-we-do-panel">
+            <article class="what-we-do-card">
+              <div class="what-we-do-icon tone-teal">🎓</div>
+              <p><span class="tone-teal">Save with special pricing</span> for college students and educators.</p>
+            </article>
+            <article class="what-we-do-card">
+              <div class="what-we-do-icon tone-green">🖥</div>
+              <p><span class="tone-green">Customize your Mac</span> with chip, memory, storage, and color.</p>
+            </article>
+            <article class="what-we-do-card">
+              <div class="what-we-do-icon tone-violet">☺</div>
+              <p>Make them yours. <span class="tone-violet">Engrave a mix of emoji, names, and numbers for free.</span></p>
+            </article>
+            <article class="what-we-do-card">
+              <div class="what-we-do-icon tone-blue">⇄</div>
+              <p><span class="tone-blue">Trade in your current device.</span> Get credit toward a new one.</p>
+            </article>
+            <article class="what-we-do-card">
+              <div class="what-we-do-icon tone-green">💳</div>
+              <p>Pay in full or <span class="tone-green">pay over time.</span> Your choice.</p>
+            </article>
+            <article class="what-we-do-card">
+              <div class="what-we-do-icon tone-green">⌚</div>
+              <p><span class="tone-green">Choose a case. Pick a band.</span> Make an Apple Watch just for you.</p>
+            </article>
+          </div>
+
+          <div class="what-we-do-panel">
+            <article class="what-we-do-card wide" style="grid-column: span 2;">
+              <div>
+                <small class="text-uppercase fw-semibold text-secondary">Apple Specialist</small>
+                <p class="mt-2">Shop one on one with a Specialist. Online or in a store.</p>
+              </div>
+              <div class="what-we-do-visual specialist"></div>
+            </article>
+            <article class="what-we-do-card wide">
+              <div>
+                <small class="text-uppercase fw-semibold text-secondary">Shop with a Specialist over video.</small>
+                <p class="mt-2">Choose your next device in a guided video session.</p>
+              </div>
+              <div class="what-we-do-visual video"></div>
+            </article>
+          </div>
+
+          <div class="what-we-do-panel">
+            <article class="what-we-do-card wide" style="grid-column: span 3;">
+              <div>
+                <small class="text-uppercase fw-semibold text-secondary">Free delivery and pickup</small>
+                <p class="mt-2">Get same-day delivery in select areas, or pick up your order in-store.</p>
+              </div>
+              <div class="what-we-do-visual" style="background-image: linear-gradient(180deg, rgba(237,237,242,0) 30%, rgba(237,237,242,.85)), url('https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1400&q=80');"></div>
+            </article>
+          </div>
         </div>
         <button class="scroll-cursor right" type="button" aria-label="Scroll right" data-scroll-right>→</button>
-        </div>
+      </div>
+      <div class="what-we-do-slider">
+        <input type="range" min="0" max="100" value="0" step="1" aria-label="Slide to see more" data-what-we-do-slider>
       </div>
     </section>
 
@@ -827,6 +893,39 @@
 
       window.addEventListener('resize', syncStickyState);
       syncStickyState();
+    })();
+
+    (() => {
+      const track = document.querySelector('[data-what-we-do-track]');
+      const range = document.querySelector('[data-what-we-do-slider]');
+      const leftBtn = document.querySelector('[data-scroll-left]');
+      const rightBtn = document.querySelector('[data-scroll-right]');
+      if (!track || !range || !leftBtn || !rightBtn) return;
+
+      const updateControls = () => {
+        const max = Math.max(track.scrollWidth - track.clientWidth, 0);
+        const progress = max > 0 ? (track.scrollLeft / max) * 100 : 0;
+        range.value = progress;
+        leftBtn.disabled = track.scrollLeft <= 4;
+        rightBtn.disabled = track.scrollLeft >= max - 4;
+      };
+
+      range.addEventListener('input', () => {
+        const max = Math.max(track.scrollWidth - track.clientWidth, 0);
+        track.scrollLeft = (Number(range.value) / 100) * max;
+      });
+
+      const scrollByPanel = (direction) => {
+        const panel = track.querySelector('.what-we-do-panel');
+        const panelWidth = panel ? panel.getBoundingClientRect().width + 16 : track.clientWidth * 0.9;
+        track.scrollBy({ left: direction * panelWidth, behavior: 'smooth' });
+      };
+
+      leftBtn.addEventListener('click', () => scrollByPanel(-1));
+      rightBtn.addEventListener('click', () => scrollByPanel(1));
+      track.addEventListener('scroll', updateControls, { passive: true });
+      window.addEventListener('resize', updateControls);
+      updateControls();
     })();
 
   </script>
