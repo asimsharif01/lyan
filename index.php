@@ -25,8 +25,48 @@
       letter-spacing: -0.01em;
     }
 
+    .navbar-wrap {
+      margin-top: 10px;
+      border-radius: 22px;
+      border: 1px solid rgba(126, 145, 255, 0.24);
+      background: linear-gradient(120deg, rgba(255,255,255,.84), rgba(245,248,255,.72));
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 38px rgba(73, 95, 210, 0.12);
+      padding: 10px 18px;
+    }
+
     .navbar {
-      padding: 22px 0;
+      padding: 8px 0;
+    }
+
+    .navbar .nav-link {
+      color: #3d456b;
+      font-weight: 500;
+      letter-spacing: .01em;
+      position: relative;
+      padding-inline: 12px !important;
+    }
+
+    .navbar .nav-link:hover {
+      color: #3347c7;
+    }
+
+    .navbar .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 5px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #6d73ff, #6fc9ff);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+
+    .navbar .nav-link:hover::after {
+      transform: scaleX(1);
     }
 
     .logo-dot {
@@ -57,6 +97,18 @@
     .btn-main:hover {
       background: #0a1d61;
       color: #fff;
+    }
+
+    .ai-chip {
+      border: 1px solid #dce3ff;
+      color: #4f5cc9;
+      background: #f7f9ff;
+      border-radius: 999px;
+      font-size: 11px;
+      padding: 6px 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     .tag {
@@ -297,26 +349,30 @@
 </head>
 <body>
   <div class="container py-2">
-    <nav class="navbar navbar-expand-lg bg-transparent">
-      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
-        <span class="logo-dot">N</span> Novatek
-      </a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#topNav"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="topNav">
-        <ul class="navbar-nav mx-auto gap-lg-3">
-          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Solutions</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Company</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-        </ul>
-        <div class="d-flex gap-2">
-          <button class="btn btn-light btn-pill border">📞 Schedule a Call</button>
-          <button class="btn btn-main btn-pill">Start a Project →</button>
+    <div class="navbar-wrap">
+      <nav class="navbar navbar-expand-lg bg-transparent">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
+          <span class="logo-dot">N</span>
+          <span>Novatek</span>
+          <span class="ai-chip">AI Native Studio</span>
+        </a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#topNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="topNav">
+          <ul class="navbar-nav mx-auto gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">AI Labs</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Case Studies</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+          </ul>
+          <div class="d-flex gap-2">
+            <button class="btn btn-light btn-pill border">📞 Schedule a Call</button>
+            <button class="btn btn-main btn-pill">Build with AI →</button>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
 
     <section class="pt-4 pt-lg-5">
       <div class="row align-items-center g-4">
