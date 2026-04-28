@@ -279,6 +279,115 @@
       box-shadow: 0 18px 28px rgba(100, 98, 255, .15);
     }
 
+    .what-we-do-shell {
+      background: #f3f4f8;
+      border: 1px solid #ebeef6;
+      border-radius: 28px;
+      padding: clamp(22px, 2.5vw, 34px);
+      overflow: hidden;
+    }
+
+    .what-we-do-headline {
+      color: #4f566d;
+      font-weight: 500;
+    }
+
+    .what-we-do-headline strong {
+      color: #0d132a;
+      font-weight: 600;
+    }
+
+    .what-we-do-track-wrap {
+      position: relative;
+    }
+
+    .what-we-do-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: clamp(230px, 25vw, 330px);
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+
+    .what-we-do-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .what-we-do-card {
+      scroll-snap-align: start;
+      border-radius: 22px;
+      min-height: 240px;
+      background: #ffffff;
+      border: 1px solid #e8ecf5;
+      box-shadow: 0 10px 25px rgba(20, 34, 89, 0.06);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .what-we-do-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      background: #eff3ff;
+    }
+
+    .what-we-do-card h5 {
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    .what-we-do-card p {
+      margin: 0;
+      color: #5f6782;
+      line-height: 1.55;
+    }
+
+    .scroll-cursor {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #d6dbed;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 20px rgba(16, 30, 77, 0.12);
+      color: #1e264f;
+      display: grid;
+      place-items: center;
+      z-index: 3;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .scroll-cursor:hover {
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .scroll-cursor:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scroll-cursor.left {
+      left: -10px;
+    }
+
+    .scroll-cursor.right {
+      right: -10px;
+    }
+
     .dark-dashboard {
       border-radius: 22px;
       background: radial-gradient(circle at 20% 15%, #283072 0%, #101a4e 35%, #0a1136 100%);
@@ -372,6 +481,9 @@
       .hero-art { min-height: 420px; margin-top: 16px; }
       .floating-card { transform: scale(.85); }
       .mini-stat { border-right: 0; border-bottom: 1px solid #eff1ff; }
+      .scroll-cursor {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -470,21 +582,61 @@
       </div>
     </section>
 
-    <section class="mt-5">
-      <div class="d-flex justify-content-between align-items-end mb-3 soft-glow">
+    <section class="mt-5 what-we-do-shell">
+      <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
         <div>
           <small class="text-uppercase text-primary fw-bold">What we do</small>
-          <h2 class="heading-medium">End-to-end software solutions<br/>built for impact</h2>
+          <h2 class="what-we-do-headline mb-0"><strong>Product engineering difference.</strong> More ways we build with you.</h2>
         </div>
-        <a href="#" class="text-decoration-none fw-semibold">View all services →</a>
+        <a href="#" class="text-decoration-none fw-semibold">Explore services →</a>
       </div>
-      <div class="row g-3">
-        <div class="col-md-6 col-lg-4 col-xl-2"><div class="service-card"><h6>Web Development</h6><p class="small text-secondary">High-performance websites and web apps.</p><a href="#">Learn more →</a></div></div>
-        <div class="col-md-6 col-lg-4 col-xl-2"><div class="service-card"><h6>Mobile App Development</h6><p class="small text-secondary">Native and cross-platform apps.</p><a href="#">Learn more →</a></div></div>
-        <div class="col-md-6 col-lg-4 col-xl-2"><div class="service-card"><h6>UI/UX Design</h6><p class="small text-secondary">Engaging and intuitive interfaces.</p><a href="#">Learn more →</a></div></div>
-        <div class="col-md-6 col-lg-4 col-xl-2"><div class="service-card"><h6>Cloud Solutions</h6><p class="small text-secondary">Secure and scalable infrastructure.</p><a href="#">Learn more →</a></div></div>
-        <div class="col-md-6 col-lg-4 col-xl-2"><div class="service-card"><h6>AI & Automation</h6><p class="small text-secondary">Workflow intelligence and automations.</p><a href="#">Learn more →</a></div></div>
-        <div class="col-md-6 col-lg-4 col-xl-2"><div class="service-card"><h6>Custom Software</h6><p class="small text-secondary">Tailored platforms for complex needs.</p><a href="#">Learn more →</a></div></div>
+      <div class="what-we-do-track-wrap">
+        <button class="scroll-cursor left" type="button" aria-label="Scroll left" data-scroll-left>←</button>
+        <div class="what-we-do-track" data-what-we-do-track>
+          <article class="what-we-do-card">
+            <div class="what-we-do-icon">✦</div>
+            <div>
+              <h5>Web platforms</h5>
+              <p>Fast, conversion-focused websites and dashboards crafted for modern brands.</p>
+            </div>
+          </article>
+          <article class="what-we-do-card">
+            <div class="what-we-do-icon">◉</div>
+            <div>
+              <h5>Mobile apps</h5>
+              <p>Native-feel iOS and Android products with clean architecture and smooth UX.</p>
+            </div>
+          </article>
+          <article class="what-we-do-card">
+            <div class="what-we-do-icon">⌁</div>
+            <div>
+              <h5>UI systems</h5>
+              <p>Design systems, flows, and polished interfaces built for scale and consistency.</p>
+            </div>
+          </article>
+          <article class="what-we-do-card">
+            <div class="what-we-do-icon">☁</div>
+            <div>
+              <h5>Cloud foundation</h5>
+              <p>Secure cloud setup, CI/CD, observability, and resilient performance tuning.</p>
+            </div>
+          </article>
+          <article class="what-we-do-card">
+            <div class="what-we-do-icon">⚙</div>
+            <div>
+              <h5>AI automation</h5>
+              <p>Practical AI features and automations that remove repetitive operational work.</p>
+            </div>
+          </article>
+          <article class="what-we-do-card">
+            <div class="what-we-do-icon">◆</div>
+            <div>
+              <h5>Custom software</h5>
+              <p>Bespoke products for internal teams, customer portals, and complex workflows.</p>
+            </div>
+          </article>
+        </div>
+        <button class="scroll-cursor right" type="button" aria-label="Scroll right" data-scroll-right>→</button>
       </div>
     </section>
 
@@ -668,6 +820,31 @@
 
       window.addEventListener('resize', syncStickyState);
       syncStickyState();
+    })();
+
+    (() => {
+      const track = document.querySelector('[data-what-we-do-track]');
+      const leftButton = document.querySelector('[data-scroll-left]');
+      const rightButton = document.querySelector('[data-scroll-right]');
+      if (!track || !leftButton || !rightButton) return;
+
+      const updateButtons = () => {
+        const maxScroll = track.scrollWidth - track.clientWidth - 2;
+        leftButton.disabled = track.scrollLeft <= 4;
+        rightButton.disabled = track.scrollLeft >= maxScroll;
+      };
+
+      const scrollByAmount = (direction) => {
+        const card = track.querySelector('.what-we-do-card');
+        const cardWidth = card ? card.getBoundingClientRect().width + 16 : 280;
+        track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+      };
+
+      leftButton.addEventListener('click', () => scrollByAmount(-1));
+      rightButton.addEventListener('click', () => scrollByAmount(1));
+      track.addEventListener('scroll', updateButtons, { passive: true });
+      window.addEventListener('resize', updateButtons);
+      updateButtons();
     })();
   </script>
 </body>
