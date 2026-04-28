@@ -280,6 +280,8 @@
     }
 
     .what-we-do-shell {
+      --what-we-do-gutter: clamp(18px, 7vw, 48px);
+      --what-we-do-panel-width: min(980px, 86vw);
       background: transparent;
       border: 0;
       border-radius: 0;
@@ -304,13 +306,15 @@
     .what-we-do-track-wrap {
       position: relative;
       overflow: hidden;
+      width: min(100%, calc(var(--what-we-do-panel-width) + (var(--what-we-do-gutter) * 2)));
+      margin-inline: auto;
     }
 
     .what-we-do-track {
       display: flex;
       gap: 16px;
       overflow-x: auto;
-      padding: 10px clamp(18px, 7vw, 48px) 12px;
+      padding: 10px var(--what-we-do-gutter) 12px;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
     }
@@ -320,7 +324,7 @@
     }
 
     .what-we-do-panel {
-      flex: 0 0 min(980px, 86vw);
+      flex: 0 0 var(--what-we-do-panel-width);
       scroll-snap-align: start;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
