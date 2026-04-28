@@ -284,10 +284,9 @@
       border: 0;
       border-radius: 0;
       padding: 0;
-      overflow: hidden;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-      margin-right: calc(50% - 50vw);
+      width: 100%;
+      margin-inline: 0;
+      overflow-x: clip;
     }
 
     .what-we-do-headline {
@@ -304,7 +303,7 @@
 
     .what-we-do-track-wrap {
       position: relative;
-      overflow: clip;
+      overflow-x: clip;
     }
 
     .what-we-do-scroll-zone {
@@ -313,20 +312,16 @@
     }
 
     .what-we-do-sticky {
-      position: sticky;
-      top: clamp(74px, 9vh, 110px);
+      position: static;
     }
 
     .what-we-do-track {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: clamp(320px, 42vw, 580px);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px;
-      overflow: visible;
-      scroll-snap-type: none;
-      padding: 10px clamp(18px, 7vw, 130px) 12px;
-      will-change: transform;
-      transform: translate3d(0, 0, 0);
+      overflow: hidden;
+      padding: 10px clamp(18px, 7vw, 48px) 12px;
+      transform: none !important;
     }
 
     .what-we-do-track::-webkit-scrollbar {
@@ -382,20 +377,7 @@
     .tone-blue { color: #0066cc; }
 
     .scroll-cursor {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid #d6dbed;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 10px 20px rgba(16, 30, 77, 0.12);
-      color: #1e264f;
-      display: grid;
-      place-items: center;
-      z-index: 3;
-      transition: opacity .25s ease, transform .25s ease;
+      display: none;
     }
 
     .scroll-cursor:hover {
@@ -513,13 +495,9 @@
       }
 
       .what-we-do-track {
-        grid-auto-columns: minmax(82vw, 1fr);
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
+        grid-template-columns: 1fr;
+        overflow: hidden;
         padding-inline: 14px;
-        transform: none !important;
-        will-change: auto;
       }
 
       .what-we-do-scroll-zone {
@@ -851,71 +829,6 @@
       syncStickyState();
     })();
 
-    (() => {
-      const track = document.querySelector('[data-what-we-do-track]');
-      const scrollZone = document.querySelector('[data-what-we-do-scroll-zone]');
-      const leftButton = document.querySelector('[data-scroll-left]');
-      const rightButton = document.querySelector('[data-scroll-right]');
-      if (!track || !leftButton || !rightButton || !scrollZone) return;
-
-      const updateButtons = () => {
-        const maxOffset = Math.max(0, track.scrollWidth - window.innerWidth);
-        const current = Math.abs(parseFloat(track.dataset.offset || '0'));
-        leftButton.disabled = current <= 4;
-        rightButton.disabled = current >= maxOffset - 2;
-      };
-
-      const setOffset = (value) => {
-        const maxOffset = Math.max(0, track.scrollWidth - window.innerWidth);
-        const clamped = Math.min(Math.max(value, 0), maxOffset);
-        track.style.transform = `translate3d(${-clamped}px, 0, 0)`;
-        track.dataset.offset = String(clamped);
-        updateButtons();
-      };
-
-      const setDesktopScrollZoneHeight = () => {
-        if (window.matchMedia('(max-width: 991px)').matches) {
-          scrollZone.style.height = 'auto';
-          track.style.transform = 'none';
-          track.dataset.offset = '0';
-          updateButtons();
-          return;
-        }
-
-        const stickyTop = parseFloat(getComputedStyle(scrollZone.querySelector('.what-we-do-sticky')).top) || 0;
-        const viewHeight = window.innerHeight;
-        const maxOffset = Math.max(0, track.scrollWidth - window.innerWidth);
-        const dynamicHeight = Math.max(track.offsetHeight + stickyTop + 40, maxOffset + viewHeight * 0.85);
-        scrollZone.style.height = `${dynamicHeight}px`;
-      };
-
-      const syncTrackToPageScroll = () => {
-        if (window.matchMedia('(max-width: 991px)').matches) return;
-        const zoneRect = scrollZone.getBoundingClientRect();
-        const zoneStart = window.scrollY + zoneRect.top;
-        const stickyTop = parseFloat(getComputedStyle(scrollZone.querySelector('.what-we-do-sticky')).top) || 0;
-        const progress = window.scrollY - zoneStart + stickyTop;
-        setOffset(progress);
-      };
-
-      const scrollByAmount = (direction) => {
-        const card = track.querySelector('.what-we-do-card');
-        const cardWidth = card ? card.getBoundingClientRect().width + 16 : 320;
-        const current = parseFloat(track.dataset.offset || '0');
-        setOffset(current + direction * cardWidth);
-      };
-
-      setDesktopScrollZoneHeight();
-      syncTrackToPageScroll();
-      leftButton.addEventListener('click', () => scrollByAmount(-1));
-      rightButton.addEventListener('click', () => scrollByAmount(1));
-      window.addEventListener('scroll', syncTrackToPageScroll, { passive: true });
-      window.addEventListener('resize', () => {
-        setDesktopScrollZoneHeight();
-        syncTrackToPageScroll();
-      });
-      updateButtons();
-    })();
   </script>
 </body>
 </html>
