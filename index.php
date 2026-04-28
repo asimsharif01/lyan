@@ -304,18 +304,29 @@
 
     .what-we-do-track-wrap {
       position: relative;
+      overflow: clip;
+    }
+
+    .what-we-do-scroll-zone {
+      position: relative;
+      height: auto;
+    }
+
+    .what-we-do-sticky {
+      position: sticky;
+      top: clamp(74px, 9vh, 110px);
     }
 
     .what-we-do-track {
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: clamp(260px, 22vw, 380px);
+      grid-auto-columns: clamp(320px, 42vw, 580px);
       gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
+      overflow: visible;
+      scroll-snap-type: none;
       padding: 10px clamp(18px, 7vw, 130px) 12px;
-      scrollbar-width: none;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
     }
 
     .what-we-do-track::-webkit-scrollbar {
@@ -502,7 +513,21 @@
       }
 
       .what-we-do-track {
+        grid-auto-columns: minmax(82vw, 1fr);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
         padding-inline: 14px;
+        transform: none !important;
+        will-change: auto;
+      }
+
+      .what-we-do-scroll-zone {
+        height: auto !important;
+      }
+
+      .what-we-do-sticky {
+        position: static;
       }
     }
   </style>
@@ -610,7 +635,8 @@
           </div>
         </div>
       </div>
-      <div class="what-we-do-track-wrap">
+      <div class="what-we-do-track-wrap what-we-do-scroll-zone" data-what-we-do-scroll-zone>
+        <div class="what-we-do-sticky">
         <button class="scroll-cursor left" type="button" aria-label="Scroll left" data-scroll-left>←</button>
         <div class="what-we-do-track" data-what-we-do-track>
           <article class="what-we-do-card">
@@ -639,6 +665,7 @@
           </article>
         </div>
         <button class="scroll-cursor right" type="button" aria-label="Scroll right" data-scroll-right>→</button>
+        </div>
       </div>
     </section>
 
@@ -826,26 +853,67 @@
 
     (() => {
       const track = document.querySelector('[data-what-we-do-track]');
+      const scrollZone = document.querySelector('[data-what-we-do-scroll-zone]');
       const leftButton = document.querySelector('[data-scroll-left]');
       const rightButton = document.querySelector('[data-scroll-right]');
-      if (!track || !leftButton || !rightButton) return;
+      if (!track || !leftButton || !rightButton || !scrollZone) return;
 
       const updateButtons = () => {
-        const maxScroll = track.scrollWidth - track.clientWidth - 2;
-        leftButton.disabled = track.scrollLeft <= 4;
-        rightButton.disabled = track.scrollLeft >= maxScroll;
+        const maxOffset = Math.max(0, track.scrollWidth - window.innerWidth);
+        const current = Math.abs(parseFloat(track.dataset.offset || '0'));
+        leftButton.disabled = current <= 4;
+        rightButton.disabled = current >= maxOffset - 2;
+      };
+
+      const setOffset = (value) => {
+        const maxOffset = Math.max(0, track.scrollWidth - window.innerWidth);
+        const clamped = Math.min(Math.max(value, 0), maxOffset);
+        track.style.transform = `translate3d(${-clamped}px, 0, 0)`;
+        track.dataset.offset = String(clamped);
+        updateButtons();
+      };
+
+      const setDesktopScrollZoneHeight = () => {
+        if (window.matchMedia('(max-width: 991px)').matches) {
+          scrollZone.style.height = 'auto';
+          track.style.transform = 'none';
+          track.dataset.offset = '0';
+          updateButtons();
+          return;
+        }
+
+        const stickyTop = parseFloat(getComputedStyle(scrollZone.querySelector('.what-we-do-sticky')).top) || 0;
+        const viewHeight = window.innerHeight;
+        const maxOffset = Math.max(0, track.scrollWidth - window.innerWidth);
+        const dynamicHeight = Math.max(track.offsetHeight + stickyTop + 40, maxOffset + viewHeight * 0.85);
+        scrollZone.style.height = `${dynamicHeight}px`;
+      };
+
+      const syncTrackToPageScroll = () => {
+        if (window.matchMedia('(max-width: 991px)').matches) return;
+        const zoneRect = scrollZone.getBoundingClientRect();
+        const zoneStart = window.scrollY + zoneRect.top;
+        const stickyTop = parseFloat(getComputedStyle(scrollZone.querySelector('.what-we-do-sticky')).top) || 0;
+        const progress = window.scrollY - zoneStart + stickyTop;
+        setOffset(progress);
       };
 
       const scrollByAmount = (direction) => {
         const card = track.querySelector('.what-we-do-card');
-        const cardWidth = card ? card.getBoundingClientRect().width + 16 : 280;
-        track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+        const cardWidth = card ? card.getBoundingClientRect().width + 16 : 320;
+        const current = parseFloat(track.dataset.offset || '0');
+        setOffset(current + direction * cardWidth);
       };
 
+      setDesktopScrollZoneHeight();
+      syncTrackToPageScroll();
       leftButton.addEventListener('click', () => scrollByAmount(-1));
       rightButton.addEventListener('click', () => scrollByAmount(1));
-      track.addEventListener('scroll', updateButtons, { passive: true });
-      window.addEventListener('resize', updateButtons);
+      window.addEventListener('scroll', syncTrackToPageScroll, { passive: true });
+      window.addEventListener('resize', () => {
+        setDesktopScrollZoneHeight();
+        syncTrackToPageScroll();
+      });
       updateButtons();
     })();
   </script>
