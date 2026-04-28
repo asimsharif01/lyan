@@ -13,7 +13,7 @@
       --primary-deep: #0f1b66;
       --surface: #ffffff;
       --line: #eef0ff;
-      --bg: radial-gradient(circle at 0% 0%, #f4f7ff 0%, #f7f9ff 35%, #ffffff 70%);
+      --bg: #ffffff;
       --glass: rgba(255, 255, 255, 0.72);
     }
 
@@ -280,21 +280,26 @@
     }
 
     .what-we-do-shell {
-      background: #f3f4f8;
-      border: 1px solid #ebeef6;
-      border-radius: 28px;
-      padding: clamp(22px, 2.5vw, 34px);
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
       overflow: hidden;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
     }
 
     .what-we-do-headline {
-      color: #4f566d;
-      font-weight: 500;
+      color: #6e6e73;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      font-size: clamp(1.5rem, 2.8vw, 2.9rem);
     }
 
     .what-we-do-headline strong {
-      color: #0d132a;
-      font-weight: 600;
+      color: #111111;
+      font-weight: 700;
     }
 
     .what-we-do-track-wrap {
@@ -304,12 +309,12 @@
     .what-we-do-track {
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: clamp(230px, 25vw, 330px);
+      grid-auto-columns: clamp(260px, 22vw, 380px);
       gap: 16px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      padding-bottom: 6px;
+      padding: 10px clamp(18px, 7vw, 130px) 12px;
       scrollbar-width: none;
     }
 
@@ -319,15 +324,16 @@
 
     .what-we-do-card {
       scroll-snap-align: start;
-      border-radius: 22px;
+      border-radius: 18px;
       min-height: 240px;
-      background: #ffffff;
-      border: 1px solid #e8ecf5;
-      box-shadow: 0 10px 25px rgba(20, 34, 89, 0.06);
-      padding: 24px;
+      background: #f5f5f7;
+      border: 0;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
+      padding: 26px 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      color: #1d1d1f;
     }
 
     .what-we-do-icon {
@@ -337,22 +343,32 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      background: #eff3ff;
+      font-size: 28px;
+      background: transparent;
+      margin-bottom: 16px;
     }
 
     .what-we-do-card h5 {
       font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-top: 18px;
-      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      margin: 0;
+      font-size: clamp(1.35rem, 2vw, 2.05rem);
+      line-height: 1.14;
     }
 
     .what-we-do-card p {
       margin: 0;
-      color: #5f6782;
-      line-height: 1.55;
+      color: #1d1d1f;
+      line-height: 1.15;
+      font-size: clamp(1.35rem, 1.9vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
+
+    .tone-teal { color: #007f8a; }
+    .tone-green { color: #008009; }
+    .tone-violet { color: #8b3df0; }
+    .tone-blue { color: #0066cc; }
 
     .scroll-cursor {
       position: absolute;
@@ -484,6 +500,10 @@
       .scroll-cursor {
         display: none;
       }
+
+      .what-we-do-track {
+        padding-inline: 14px;
+      }
     }
   </style>
 </head>
@@ -583,57 +603,39 @@
     </section>
 
     <section class="mt-5 what-we-do-shell">
-      <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
-        <div>
-          <small class="text-uppercase text-primary fw-bold">What we do</small>
-          <h2 class="what-we-do-headline mb-0"><strong>Product engineering difference.</strong> More ways we build with you.</h2>
+      <div class="px-3 px-md-4 px-xl-5">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+          <div>
+            <h2 class="what-we-do-headline mb-0"><strong>The Apple Store difference.</strong> Even more reasons to shop with us.</h2>
+          </div>
         </div>
-        <a href="#" class="text-decoration-none fw-semibold">Explore services →</a>
       </div>
       <div class="what-we-do-track-wrap">
         <button class="scroll-cursor left" type="button" aria-label="Scroll left" data-scroll-left>←</button>
         <div class="what-we-do-track" data-what-we-do-track>
           <article class="what-we-do-card">
-            <div class="what-we-do-icon">✦</div>
-            <div>
-              <h5>Web platforms</h5>
-              <p>Fast, conversion-focused websites and dashboards crafted for modern brands.</p>
-            </div>
+            <div class="what-we-do-icon tone-teal">🎓</div>
+            <p><span class="tone-teal">Save with special pricing</span> for college students and educators.</p>
           </article>
           <article class="what-we-do-card">
-            <div class="what-we-do-icon">◉</div>
-            <div>
-              <h5>Mobile apps</h5>
-              <p>Native-feel iOS and Android products with clean architecture and smooth UX.</p>
-            </div>
+            <div class="what-we-do-icon tone-green">🖥</div>
+            <p><span class="tone-green">Customize your Mac</span> with chip, memory, storage, and color.</p>
           </article>
           <article class="what-we-do-card">
-            <div class="what-we-do-icon">⌁</div>
-            <div>
-              <h5>UI systems</h5>
-              <p>Design systems, flows, and polished interfaces built for scale and consistency.</p>
-            </div>
+            <div class="what-we-do-icon tone-violet">☺</div>
+            <p>Make them yours. <span class="tone-violet">Engrave a mix of emoji, names, and numbers for free.</span></p>
           </article>
           <article class="what-we-do-card">
-            <div class="what-we-do-icon">☁</div>
-            <div>
-              <h5>Cloud foundation</h5>
-              <p>Secure cloud setup, CI/CD, observability, and resilient performance tuning.</p>
-            </div>
+            <div class="what-we-do-icon tone-blue">⇄</div>
+            <p><span class="tone-blue">Trade in your current device.</span> Get credit toward a new one.</p>
           </article>
           <article class="what-we-do-card">
-            <div class="what-we-do-icon">⚙</div>
-            <div>
-              <h5>AI automation</h5>
-              <p>Practical AI features and automations that remove repetitive operational work.</p>
-            </div>
+            <div class="what-we-do-icon tone-green">💳</div>
+            <p>Pay in full or <span class="tone-green">pay over time.</span> Your choice.</p>
           </article>
           <article class="what-we-do-card">
-            <div class="what-we-do-icon">◆</div>
-            <div>
-              <h5>Custom software</h5>
-              <p>Bespoke products for internal teams, customer portals, and complex workflows.</p>
-            </div>
+            <div class="what-we-do-icon tone-green">⌚</div>
+            <p><span class="tone-green">Choose a case. Pick a band.</span> Make an Apple Watch just for you.</p>
           </article>
         </div>
         <button class="scroll-cursor right" type="button" aria-label="Scroll right" data-scroll-right>→</button>
