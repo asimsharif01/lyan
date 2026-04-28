@@ -13,7 +13,8 @@
       --primary-deep: #0f1b66;
       --surface: #ffffff;
       --line: #eef0ff;
-      --bg: radial-gradient(circle at 10% 20%, #f6f8ff 0%, #fcfcff 40%, #ffffff 100%);
+      --bg: radial-gradient(circle at 0% 0%, #f4f7ff 0%, #f7f9ff 35%, #ffffff 70%);
+      --glass: rgba(255, 255, 255, 0.72);
     }
 
     body {
@@ -21,6 +22,7 @@
       color: var(--text);
       background: var(--bg);
       line-height: 1.6;
+      letter-spacing: -0.01em;
     }
 
     .navbar {
@@ -74,7 +76,7 @@
     h1.hero-title {
       font-size: clamp(2rem, 4vw, 4rem);
       line-height: 1.06;
-      font-weight: 800;
+      font-weight: 600;
       margin: 18px 0;
       letter-spacing: -0.02em;
     }
@@ -169,6 +171,20 @@
 
     .mini-stat:last-child { border-right: 0; }
 
+    .soft-glow {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .soft-glow::before {
+      content: "";
+      position: absolute;
+      inset: -30% -10%;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 10%, rgba(87,122,255,.26), rgba(87,122,255,0));
+      filter: blur(30px);
+    }
+
     .service-card {
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -219,6 +235,55 @@
       background: repeating-radial-gradient(circle at 100% 0, rgba(255,255,255,.12), rgba(255,255,255,0) 80px);
       opacity: .4;
       pointer-events: none;
+    }
+
+
+
+    .modern-strip {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(120deg, rgba(11,22,67,.96), rgba(38,67,170,.88), rgba(89,118,255,.88));
+      color: #edf1ff;
+      box-shadow: 0 26px 50px rgba(30, 49, 131, .25);
+      overflow: hidden;
+    }
+
+    .modern-strip .carousel-item {
+      min-height: 240px;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 18px;
+      padding: 20px;
+      color: #152049;
+    }
+
+    .gradient-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.35);
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #dfe5ff;
+      display: inline-flex;
+      gap: 8px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .heading-medium {
+      font-weight: 600 !important;
+      letter-spacing: -0.02em;
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+      background-color: rgba(255,255,255,.2);
+      border-radius: 50%;
+      width: 2.6rem;
+      height: 2.6rem;
+      background-size: 45% 45%;
     }
 
     footer a { text-decoration: none; color: #60689a; }
@@ -322,10 +387,10 @@
     </section>
 
     <section class="mt-5">
-      <div class="d-flex justify-content-between align-items-end mb-3">
+      <div class="d-flex justify-content-between align-items-end mb-3 soft-glow">
         <div>
           <small class="text-uppercase text-primary fw-bold">What we do</small>
-          <h2 class="fw-bold">End-to-end software solutions<br/>built for impact</h2>
+          <h2 class="heading-medium">End-to-end software solutions<br/>built for impact</h2>
         </div>
         <a href="#" class="text-decoration-none fw-semibold">View all services →</a>
       </div>
@@ -343,7 +408,7 @@
       <div class="row g-4 align-items-center">
         <div class="col-lg-4">
           <small class="text-uppercase text-primary fw-bold">Why choose novatek</small>
-          <h2 class="fw-bold">Technology. Innovation. Results.</h2>
+          <h2 class="heading-medium">Technology. Innovation. Results.</h2>
           <p class="text-secondary">We combine cutting-edge technologies with best practices to deliver solutions that drive real impact.</p>
           <ul class="list-unstyled text-secondary">
             <li>✓ Agile Development Process</li>
@@ -368,9 +433,76 @@
       </div>
     </section>
 
+    <section class="modern-strip mt-5 p-4 p-md-5">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+        <div>
+          <span class="gradient-pill">Modern Product Slider</span>
+          <h2 class="heading-medium mt-3 mb-1 text-white">Apple-inspired, sleek product moments.</h2>
+          <p class="mb-0 text-white-50">Slide through capabilities designed for clarity, speed, and premium visual feel.</p>
+        </div>
+      </div>
+      <div id="insightSlider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-3 align-items-center">
+              <div class="col-lg-7">
+                <h3 class="heading-medium text-white">Realtime Tech Intelligence</h3>
+                <p class="text-white-50">Watch product metrics update live with low-latency pipelines and readable dashboards for every team.</p>
+              </div>
+              <div class="col-lg-5">
+                <div class="glass-card">
+                  <small class="text-secondary">Latency</small>
+                  <div class="display-6 heading-medium">42ms</div>
+                  <small>Global infrastructure optimized for instant response.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-3 align-items-center">
+              <div class="col-lg-7">
+                <h3 class="heading-medium text-white">Immersive Visual Layer</h3>
+                <p class="text-white-50">Modern gradients, balanced spacing, and medium-weight typography for effortless reading across devices.</p>
+              </div>
+              <div class="col-lg-5">
+                <div class="glass-card">
+                  <small class="text-secondary">Design score</small>
+                  <div class="display-6 heading-medium">97/100</div>
+                  <small>Accessibility first color contrast with premium aesthetics.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-3 align-items-center">
+              <div class="col-lg-7">
+                <h3 class="heading-medium text-white">Secure Cloud Foundation</h3>
+                <p class="text-white-50">Enterprise-grade architecture with reliable scaling, smart automation, and clear operational control.</p>
+              </div>
+              <div class="col-lg-5">
+                <div class="glass-card">
+                  <small class="text-secondary">Availability</small>
+                  <div class="display-6 heading-medium">99.99%</div>
+                  <small>Resilient systems engineered for mission-critical launches.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#insightSlider" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#insightSlider" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
     <section class="mt-5">
       <small class="text-uppercase text-primary fw-bold">Why process</small>
-      <h2 class="fw-bold">A seamless process from<br/>idea to launch</h2>
+      <h2 class="heading-medium">A seamless process from<br/>idea to launch</h2>
       <div class="row mt-2 g-2">
         <div class="col-md-2"><div class="process-step"><strong>01</strong><div>Discover</div><small class="text-secondary">Know your goals.</small></div></div>
         <div class="col-md-2"><div class="process-step"><strong>02</strong><div>Plan</div><small class="text-secondary">Roadmap strategy.</small></div></div>
@@ -385,7 +517,7 @@
       <div class="d-flex justify-content-between align-items-end">
         <div>
           <small class="text-uppercase text-primary fw-bold">Testimonials</small>
-          <h2 class="fw-bold">Loved by teams<br/>around the world.</h2>
+          <h2 class="heading-medium">Loved by teams<br/>around the world.</h2>
         </div>
         <a href="#" class="text-decoration-none fw-semibold">View all testimonials →</a>
       </div>
@@ -399,7 +531,7 @@
     <section class="cta-band mt-4 p-4 p-md-5 d-flex flex-wrap justify-content-between align-items-center gap-3">
       <div>
         <small class="text-uppercase">Ready to get started?</small>
-        <h2 class="mb-1">Let's build something amazing together.</h2>
+        <h2 class="mb-1 heading-medium">Let's build something amazing together.</h2>
         <p class="mb-0 text-white-50">Share your idea with us and let's create a digital solution that drives results.</p>
       </div>
       <button class="btn btn-light btn-pill px-4">Start a Project →</button>
@@ -416,7 +548,7 @@
         <div class="col-6 col-lg-2"><h6>Resources</h6><a href="#">Documentation</a><br><a href="#">Case Studies</a><br><a href="#">FAQs</a><br><a href="#">Privacy Policy</a></div>
         <div class="col-6 col-lg-3"><h6>Newsletter</h6><p class="text-secondary">Get the latest updates and insights from our team.</p><div class="input-group"><input class="form-control" placeholder="Enter your email"><button class="btn btn-primary">➤</button></div></div>
       </div>
-      <div class="text-center text-secondary mt-4">© 2024 Novatek. All rights reserved.</div>
+      <div class="text-center text-secondary mt-4">© 2026 Novatek. All rights reserved.</div>
     </footer>
   </div>
 
