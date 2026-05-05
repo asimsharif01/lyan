@@ -528,10 +528,54 @@
 
     .dark-dashboard {
       border-radius: 22px;
-      background: radial-gradient(circle at 20% 15%, #283072 0%, #101a4e 35%, #0a1136 100%);
-      color: #d9ddff;
-      border: 1px solid #313d80;
-      box-shadow: 0 24px 45px rgba(53, 56, 164, .34);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(95, 125, 255, .16), transparent 42%),
+        radial-gradient(circle at 100% 100%, rgba(115, 225, 255, .18), transparent 46%),
+        linear-gradient(150deg, #ffffff, #f6f9ff 62%, #edf3ff);
+      color: #1a2757;
+      border: 1px solid #d8e4ff;
+      box-shadow: 0 24px 45px rgba(49, 86, 196, .12);
+    }
+
+    .overview-metric {
+      border-radius: 14px;
+      border: 1px solid #dce6ff;
+      background: rgba(255,255,255,.82);
+    }
+
+    .overview-metric small {
+      color: #5f6e99;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 600;
+      font-size: .68rem;
+    }
+
+    .overview-metric .h4 {
+      color: #142160;
+      margin: 4px 0 0;
+      font-weight: 700;
+    }
+
+    .activity-card {
+      border-radius: 16px;
+      border: 1px solid #dce5ff;
+      background: rgba(255,255,255,.76);
+    }
+
+    .activity-bars {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      align-items: end;
+      gap: 10px;
+      height: 120px;
+      margin-top: 16px;
+    }
+
+    .activity-bars span {
+      border-radius: 10px 10px 4px 4px;
+      background: linear-gradient(180deg, rgba(86, 109, 255, .95) 0%, rgba(120, 203, 255, .6) 100%);
+      box-shadow: 0 8px 18px rgba(73, 110, 235, .22);
     }
 
     .process-constellation {
@@ -1003,15 +1047,26 @@
           <button class="btn btn-main btn-pill mt-2">More about us →</button>
         </div>
         <div class="col-lg-8">
-          <div class="dark-dashboard p-4">
-            <h4 class="mb-4">Overview</h4>
-            <div class="row g-3 mb-3">
-              <div class="col-6 col-md-3"><div class="section-card p-3 bg-transparent border-secondary-subtle text-light"><small>Total Projects</small><div class="h4">128</div></div></div>
-              <div class="col-6 col-md-3"><div class="section-card p-3 bg-transparent border-secondary-subtle text-light"><small>Active Clients</small><div class="h4">84</div></div></div>
-              <div class="col-6 col-md-3"><div class="section-card p-3 bg-transparent border-secondary-subtle text-light"><small>Success Rate</small><div class="h4">98.6%</div></div></div>
-              <div class="col-6 col-md-3"><div class="section-card p-3 bg-transparent border-secondary-subtle text-light"><small>Revenue</small><div class="h4">$24.8k</div></div></div>
+          <div class="dark-dashboard p-4 p-lg-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="mb-0">Overview</h4>
+              <span class="badge rounded-pill text-bg-light border">Updated just now</span>
             </div>
-            <div class="section-card p-4 bg-transparent border-secondary-subtle text-light" style="height:210px">Project Activity<br/><div class="mt-3" style="height:120px;background:linear-gradient(180deg,rgba(125,114,255,.4),rgba(125,114,255,0));border-radius:12px"></div></div>
+            <div class="row g-3 mb-3">
+              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Total Projects</small><div class="h4">128</div></div></div>
+              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Active Clients</small><div class="h4">84</div></div></div>
+              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Success Rate</small><div class="h4">98.6%</div></div></div>
+              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Revenue</small><div class="h4">$24.8k</div></div></div>
+            </div>
+            <div class="activity-card p-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <strong>Project Activity</strong>
+                <small class="text-secondary">Last 8 weeks</small>
+              </div>
+              <div class="activity-bars" aria-hidden="true">
+                <span style="height:40%"></span><span style="height:55%"></span><span style="height:48%"></span><span style="height:78%"></span><span style="height:66%"></span><span style="height:88%"></span><span style="height:72%"></span><span style="height:92%"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
