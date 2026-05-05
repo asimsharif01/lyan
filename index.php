@@ -308,12 +308,67 @@
       to { transform: translateX(-50%); }
     }
 
-    .mini-stat {
-      border-right: 1px solid #eff1ff;
-      padding: 10px 20px;
+    .metrics-grid {
+      position: relative;
+      border: 1px solid rgba(130, 145, 255, 0.18);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(125, 131, 255, .16), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(92, 196, 255, .12), transparent 58%),
+        #fff;
+      overflow: hidden;
     }
 
-    .mini-stat:last-child { border-right: 0; }
+    .metrics-grid::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(130deg, rgba(111, 121, 255, .12), rgba(91, 222, 255, .1), rgba(111, 121, 255, .12));
+      filter: blur(24px);
+      z-index: -1;
+    }
+
+    .mini-stat {
+      position: relative;
+      padding: 20px 18px;
+      border-right: 1px solid rgba(226, 230, 255, 0.9);
+      border-bottom: 1px solid rgba(226, 230, 255, 0.9);
+      background: linear-gradient(170deg, rgba(255,255,255,.82), rgba(248,250,255,.82));
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .mini-stat:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 28px rgba(96, 107, 220, 0.14);
+      border-color: rgba(164, 175, 255, 0.65);
+    }
+
+    .mini-stat-number {
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      line-height: 1;
+      margin: 0 0 8px;
+      font-weight: 700;
+      color: #10194b;
+      letter-spacing: -0.02em;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .mini-stat-number .suffix {
+      font-size: .66em;
+      color: #5a66d7;
+      font-weight: 600;
+    }
+
+    .mini-stat-label {
+      margin: 0;
+      color: #6f789f;
+      font-size: .93rem;
+      font-weight: 500;
+    }
 
     .soft-glow {
       position: relative;
@@ -598,7 +653,7 @@
     @media (max-width: 991px) {
       .hero-art { min-height: 420px; margin-top: 16px; }
       .floating-card { transform: scale(.85); }
-      .mini-stat { border-right: 0; border-bottom: 1px solid #eff1ff; }
+      .mini-stat { border-right: 0; }
       .scroll-cursor {
         display: none;
       }
@@ -699,13 +754,28 @@
       </div>
     </section>
 
-    <section class="section-card p-2 p-md-4 mt-4">
+    <section class="metrics-grid p-2 p-md-3 mt-4">
       <div class="row g-2 text-center">
-        <div class="col-md-4 col-lg mini-stat"><h3 class="mb-0">250+</h3><small class="text-secondary">Projects Completed</small></div>
-        <div class="col-md-4 col-lg mini-stat"><h3 class="mb-0">150+</h3><small class="text-secondary">Happy Clients</small></div>
-        <div class="col-md-4 col-lg mini-stat"><h3 class="mb-0">10+</h3><small class="text-secondary">Years of Experience</small></div>
-        <div class="col-md-6 col-lg mini-stat"><h3 class="mb-0">99.9%</h3><small class="text-secondary">Uptime & Reliability</small></div>
-        <div class="col-md-6 col-lg mini-stat"><h3 class="mb-0">24/7</h3><small class="text-secondary">Support Available</small></div>
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="250" data-decimals="0">0</span><span class="suffix">+</span></h3>
+          <p class="mini-stat-label">Projects Completed</p>
+        </div>
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="150" data-decimals="0">0</span><span class="suffix">+</span></h3>
+          <p class="mini-stat-label">Happy Clients</p>
+        </div>
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="10" data-decimals="0">0</span><span class="suffix">+</span></h3>
+          <p class="mini-stat-label">Years of Experience</p>
+        </div>
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="99.9" data-decimals="1">0</span><span class="suffix">%</span></h3>
+          <p class="mini-stat-label">Uptime & Reliability</p>
+        </div>
+        <div class="col-12 mini-stat">
+          <h3 class="mini-stat-number">24/7</h3>
+          <p class="mini-stat-label">Support Available</p>
+        </div>
       </div>
     </section>
 
@@ -1000,6 +1070,38 @@
       track.addEventListener('scroll', updateControls, { passive: true });
       window.addEventListener('resize', updateControls);
       updateControls();
+    })();
+
+    (() => {
+      const counterEls = document.querySelectorAll('[data-counter]');
+      if (!counterEls.length) return;
+
+      const animateCounter = (el) => {
+        const target = Number(el.dataset.target || 0);
+        const decimals = Number(el.dataset.decimals || 0);
+        const duration = 1500;
+        const start = performance.now();
+
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = target * eased;
+          el.textContent = value.toFixed(decimals);
+          if (progress < 1) requestAnimationFrame(step);
+        };
+
+        requestAnimationFrame(step);
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.45 });
+
+      counterEls.forEach((el) => observer.observe(el));
     })();
 
   </script>
