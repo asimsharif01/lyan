@@ -487,17 +487,7 @@
       background-image: linear-gradient(180deg, rgba(237,237,242,0) 30%, rgba(237,237,242,.85)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80');
     }
 
-    .what-we-do-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      background: transparent;
-      margin-bottom: 16px;
-    }
+    
 
     .what-we-do-card h5 {
       font-weight: 600;
@@ -668,6 +658,48 @@
         min-height: 340px;
       }
     }
+    .gradient-text {
+ background: linear-gradient(90deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-1 {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-2 {
+  background: linear-gradient(90deg, #cd66ea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-3 {
+  background: linear-gradient(90deg, #ffe552, #3d80d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-4 {
+  background: linear-gradient(90deg, #11998e, #38ef7d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-5 {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-6 {
+  background: linear-gradient(90deg, #43cea2, #185a9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.what-we-do-icon {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #4b4b4b;
+}
   </style>
 </head>
 <body>
@@ -701,7 +733,7 @@
       <div class="row align-items-center g-4">
         <div class="col-lg-6">
           <span class="tag">✦ SOFTWARE. DESIGN. INNOVATION.</span>
-          <h1 class="hero-title">Building next-gen digital products that accelerate <span class="accent">business growth.</span></h1>
+          <h1 class="hero-title">Building next-gen digital products that accelerate <span class="gradient-text">business growth.</span></h1>
           <p class="hero-sub">We partner with startups and enterprises to build scalable, secure, and high-performance digital products that drive real impact.</p>
           <div class="d-flex flex-wrap gap-3 mb-4">
             <button class="btn btn-main btn-pill">Start a Project →</button>
@@ -761,70 +793,80 @@
       <div class="px-0">
         <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
           <div>
-            <h2 class="what-we-do-headline mb-0"><strong>Nove Tech next Gen.</strong> Even more reasons to with us.</h2>
+            <h2 class="what-we-do-headline mb-0"><strong class="gradient-text">Nove Tech next Gen.</strong> Even more reasons to with us.</h2>
           </div>
         </div>
       </div>
       <div class="what-we-do-track-wrap">
-        <button class="scroll-cursor left" type="button" aria-label="Scroll left" data-scroll-left>←</button>
-        <div class="what-we-do-track" data-what-we-do-track>
-          <div class="what-we-do-panel">
-            <article class="what-we-do-card">
-              <div class="what-we-do-icon tone-teal">🎓</div>
-              <p><span class="tone-teal">Save with special pricing</span> for college students and educators.</p>
-            </article>
-            <article class="what-we-do-card">
-              <div class="what-we-do-icon tone-green">🖥</div>
-              <p><span class="tone-green">Customize your Mac</span> with chip, memory, storage, and color.</p>
-            </article>
-            <article class="what-we-do-card">
-              <div class="what-we-do-icon tone-violet">☺</div>
-              <p>Make them yours. <span class="tone-violet">Engrave a mix of emoji, names, and numbers for free.</span></p>
-            </article>
-            <article class="what-we-do-card">
-              <div class="what-we-do-icon tone-blue">⇄</div>
-              <p><span class="tone-blue">Trade in your current device.</span> Get credit toward a new one.</p>
-            </article>
-            <article class="what-we-do-card">
-              <div class="what-we-do-icon tone-green">💳</div>
-              <p>Pay in full or <span class="tone-green">pay over time.</span> Your choice.</p>
-            </article>
-            <article class="what-we-do-card">
-              <div class="what-we-do-icon tone-green">⌚</div>
-              <p><span class="tone-green">Choose a case. Pick a band.</span> Make an Apple Watch just for you.</p>
-            </article>
-          </div>
+  <button class="scroll-cursor left" type="button" aria-label="Scroll left" data-scroll-left>←</button>
 
-          <div class="what-we-do-panel">
-            <article class="what-we-do-card wide" style="grid-column: span 2;">
-              <div>
-                <small class="text-uppercase fw-semibold text-secondary">Apple Specialist</small>
-                <p class="mt-2">Shop one on one with a Specialist. Online or in a store.</p>
-              </div>
-              <div class="what-we-do-visual specialist"></div>
-            </article>
-            <article class="what-we-do-card wide">
-              <div>
-                <small class="text-uppercase fw-semibold text-secondary">Shop with a Specialist over video.</small>
-                <p class="mt-2">Choose your next device in a guided video session.</p>
-              </div>
-              <div class="what-we-do-visual video"></div>
-            </article>
-          </div>
+  <div class="what-we-do-track" data-what-we-do-track>
 
-          <div class="what-we-do-panel">
-            <article class="what-we-do-card wide" style="grid-column: span 3;">
-              <div>
-                <small class="text-uppercase fw-semibold text-secondary">Free delivery and pickup</small>
-                <p class="mt-2">Get same-day delivery in select areas, or pick up your order in-store.</p>
-              </div>
-              <div class="what-we-do-visual" style="background-image: linear-gradient(180deg, rgba(237,237,242,0) 30%, rgba(237,237,242,.85)), url('https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1400&q=80');"></div>
-            </article>
-          </div>
+    <div class="what-we-do-panel">
+      <article class="what-we-do-card">
+  <div class="what-we-do-icon tone-teal">FAST</div>
+  <p><span class="gradient-text-1">Build faster with scalable solutions</span> designed for modern businesses.</p>
+</article>
+
+<article class="what-we-do-card">
+  <div class="what-we-do-icon tone-green">CUSTOM</div>
+  <p><span class="gradient-text-2">Customize your digital infrastructure</span> with flexible and powerful tools.</p>
+</article>
+
+<article class="what-we-do-card">
+  <div class="what-we-do-icon tone-violet">TAILORED</div>
+  <p>Tailored for you. <span class="gradient-text-3">We create solutions that match your exact business needs.</span></p>
+</article>
+
+<article class="what-we-do-card">
+  <div class="what-we-do-icon tone-blue">INTEGRATE</div>
+  <p><span class="gradient-text-4">Seamless system integration.</span> Connect your tools and workflows effortlessly.</p>
+</article>
+
+<article class="what-we-do-card">
+  <div class="what-we-do-icon tone-green">FLEXIBLE</div>
+  <p>Flexible pricing models with <span class="gradient-text-5">cost-effective plans</span> for every scale.</p>
+</article>
+
+<article class="what-we-do-card">
+  <div class="what-we-do-icon tone-green">INSIGHTS</div>
+  <p><span class="gradient-text-6">Data-driven insights</span> to help you make smarter business decisions.</p>
+</article>
+    </div>
+
+    <div class="what-we-do-panel">
+      <article class="what-we-do-card wide" style="grid-column: span 2;">
+        <div>
+          <small class="text-uppercase fw-semibold text-secondary">Expert Consultation</small>
+          <p class="mt-2">Work directly with our specialists to plan and execute your tech strategy. Lorem ipsum dolor <span class="gradient-text-6">sit amet consectetur adipisicing elit</span>. Porro ex esse earum temporibus, necessitatibus fugit maxime asperiores reiciendis accusamus sint sed iste adipisci.</p>
         </div>
-        <button class="scroll-cursor right" type="button" aria-label="Scroll right" data-scroll-right>→</button>
-      </div>
-      <div class="what-we-do-slider">
+        <div class="what-we-do-visual specialist"></div>
+      </article>
+
+      <article class="what-we-do-card wide">
+        <div>
+          <small class="text-uppercase fw-semibold text-secondary">Remote Collaboration</small>
+          <p class="mt-2">Engage with our team through <span class="gradient-text-3">seamless online sessions</span> and real-time support.</p>
+        </div>
+        <div class="what-we-do-visual video"></div>
+      </article>
+    </div>
+
+    <div class="what-we-do-panel">
+      <article class="what-we-do-card wide" style="grid-column: span 3;">
+        <div>
+          <small class="text-uppercase fw-semibold text-secondary">Deployment & Support</small>
+          <p class="mt-2">From implementation to scaling, we ensure smooth delivery and ongoing support. <span class="gradient-text-1">Lorem ipsum dolor sit amet consectetur adipisicing</span> elit. Cum, quisquam dolorem cupiditate ipsa sequi, libero pariatur repellendus nisi ipsam vero alias. Error nobis voluptatum optio quia saepe numquam, suscipit temporibus</p>
+        </div>
+        <div class="what-we-do-visual" style="background-image: linear-gradient(180deg, rgba(237,237,242,0) 30%, rgba(237,237,242,.85)), url('https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1400&q=80');"></div>
+      </article>
+    </div>
+
+  </div>
+
+  <button class="scroll-cursor right" type="button" aria-label="Scroll right" data-scroll-right>→</button>
+</div>
+      <div class="what-we-do-slider d-none">
         <input type="range" min="0" max="100" value="0" step="1" aria-label="Slide to see more" data-what-we-do-slider>
       </div>
     </section>
