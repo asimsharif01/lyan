@@ -1017,7 +1017,7 @@
 
     <section class="mt-5">
       <small class="text-uppercase text-primary fw-bold">Execution architecture</small>
-      <h2 class="heading-medium">From signal to scale —<br/>our elite launch loop</h2>
+      <h2 class="heading-medium">From signal to scale — Our elite <span class="gradient-text">launch loop</span></h2>
       <div class="process-constellation">
         <div class="row g-3">
           <div class="col-md-6 col-lg-4"><article class="process-step"><strong>01</strong><h6>Signal Scan</h6><p>Decode market intent, friction, and opportunity zones before a single build decision is made.</p></article></div>
