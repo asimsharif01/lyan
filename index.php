@@ -638,38 +638,60 @@
 
 
 
-    .modern-strip {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: linear-gradient(120deg, rgba(11,22,67,.96), rgba(38,67,170,.88), rgba(89,118,255,.88));
-      color: #edf1ff;
-      box-shadow: 0 26px 50px rgba(30, 49, 131, .25);
+    .tech-orbit {
+      border-radius: 28px;
+      padding: clamp(24px, 4vw, 44px);
+      border: 1px solid #dfe5ff;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(114, 149, 255, .3), transparent 45%),
+        radial-gradient(circle at 85% 0%, rgba(126, 92, 255, .24), transparent 38%),
+        linear-gradient(130deg, #070c2b 0%, #101b54 52%, #182a7b 100%);
+      position: relative;
       overflow: hidden;
+      box-shadow: 0 30px 60px rgba(16, 24, 76, .35);
     }
 
-    .modern-strip .carousel-item {
-      min-height: 240px;
+    .tech-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+      opacity: .35;
+      pointer-events: none;
     }
 
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,.5);
-      border-radius: 18px;
-      padding: 20px;
-      color: #152049;
-    }
-
-    .gradient-pill {
+    .tech-pill {
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.35);
-      padding: 8px 16px;
-      font-size: 12px;
-      color: #dfe5ff;
-      display: inline-flex;
-      gap: 8px;
-      letter-spacing: .06em;
+      border: 1px solid rgba(189, 206, 255, .45);
+      background: rgba(143, 168, 255, .14);
+      color: #dbe5ff;
+      font-size: .75rem;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      padding: 8px 16px;
+      display: inline-flex;
+    }
+
+    .signal-card {
+      border-radius: 18px;
+      border: 1px solid rgba(195, 213, 255, .34);
+      background: rgba(11, 19, 58, .56);
+      backdrop-filter: blur(8px);
+      padding: 18px;
+      color: #f5f7ff;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .signal-value {
+      color: #9fc2ff;
+      font-size: 1.9rem;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      font-weight: 600;
     }
 
     .heading-medium {
@@ -972,70 +994,40 @@
 
     
 
-    <section class="modern-strip mt-5 p-4 p-md-5">
-      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
-        <div>
-          <span class="gradient-pill">Modern Product Slider</span>
-          <h2 class="heading-medium mt-3 mb-1 text-white">Apple-inspired, sleek product moments.</h2>
-          <p class="mb-0 text-white-50">Slide through capabilities designed for clarity, speed, and premium visual feel.</p>
-        </div>
-      </div>
-      <div id="insightSlider" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-7">
-                <h3 class="heading-medium text-white">Realtime Tech Intelligence</h3>
-                <p class="text-white-50">Watch product metrics update live with low-latency pipelines and readable dashboards for every team.</p>
-              </div>
-              <div class="col-lg-5">
-                <div class="glass-card">
-                  <small class="text-secondary">Latency</small>
-                  <div class="display-6 heading-medium">42ms</div>
-                  <small>Global infrastructure optimized for instant response.</small>
-                </div>
-              </div>
+    <section class="tech-orbit mt-5">
+      <div class="row align-items-center g-4 position-relative" style="z-index:1;">
+        <div class="col-lg-7">
+          <span class="tech-pill">Adaptive intelligence fabric</span>
+          <h2 class="heading-medium mt-3 mb-2 text-white">A command layer built for ambitious tech teams.</h2>
+          <p class="text-white-50 mb-4">From product analytics to infrastructure health, Novatek unifies your mission-critical signals into one elegant operating view.</p>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <article class="signal-card">
+                <small class="text-white-50 d-block mb-2">Data fusion velocity</small>
+                <div class="signal-value">3.4M/min</div>
+                <p class="mb-0 text-white-50">Events normalized in realtime across app, cloud, and AI pipelines.</p>
+              </article>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-7">
-                <h3 class="heading-medium text-white">Immersive Visual Layer</h3>
-                <p class="text-white-50">Modern gradients, balanced spacing, and medium-weight typography for effortless reading across devices.</p>
-              </div>
-              <div class="col-lg-5">
-                <div class="glass-card">
-                  <small class="text-secondary">Design score</small>
-                  <div class="display-6 heading-medium">97/100</div>
-                  <small>Accessibility first color contrast with premium aesthetics.</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row g-3 align-items-center">
-              <div class="col-lg-7">
-                <h3 class="heading-medium text-white">Secure Cloud Foundation</h3>
-                <p class="text-white-50">Enterprise-grade architecture with reliable scaling, smart automation, and clear operational control.</p>
-              </div>
-              <div class="col-lg-5">
-                <div class="glass-card">
-                  <small class="text-secondary">Availability</small>
-                  <div class="display-6 heading-medium">99.99%</div>
-                  <small>Resilient systems engineered for mission-critical launches.</small>
-                </div>
-              </div>
+            <div class="col-sm-6">
+              <article class="signal-card">
+                <small class="text-white-50 d-block mb-2">Decision confidence</small>
+                <div class="signal-value">98.2%</div>
+                <p class="mb-0 text-white-50">Explainable scoring models with audit-ready confidence traces.</p>
+              </article>
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#insightSlider" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#insightSlider" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="col-lg-5">
+          <div class="signal-card p-4">
+            <small class="text-white-50 d-block mb-3">Live orchestration status</small>
+            <div class="d-flex justify-content-between align-items-center mb-2"><span>Platform uptime</span><strong>99.99%</strong></div>
+            <div class="progress mb-3" style="height:8px;background:rgba(255,255,255,.15);"><div class="progress-bar" role="progressbar" style="width:99.99%;background:linear-gradient(90deg,#86a8ff,#5ce1e6);"></div></div>
+            <div class="d-flex justify-content-between align-items-center mb-2"><span>AI routing efficiency</span><strong>94%</strong></div>
+            <div class="progress mb-3" style="height:8px;background:rgba(255,255,255,.15);"><div class="progress-bar" role="progressbar" style="width:94%;background:linear-gradient(90deg,#b996ff,#7ba3ff);"></div></div>
+            <div class="d-flex justify-content-between align-items-center"><span>Release automation</span><strong>87%</strong></div>
+            <div class="progress" style="height:8px;background:rgba(255,255,255,.15);"><div class="progress-bar" role="progressbar" style="width:87%;background:linear-gradient(90deg,#66ffd2,#5a84ff);"></div></div>
+          </div>
+        </div>
       </div>
     </section>
 
