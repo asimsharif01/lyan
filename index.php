@@ -426,15 +426,15 @@
     .what-we-do-track-wrap {
       position: relative;
       overflow: hidden;
-      width: min(100%, calc(var(--what-we-do-panel-width) + (var(--what-we-do-gutter) * 2)));
-      margin-inline: auto;
+      width: 100%;
+      margin-inline: 0;
     }
 
     .what-we-do-track {
       display: flex;
       gap: 16px;
       overflow-x: auto;
-      padding: 0px var(--what-we-do-gutter) 12px;
+      padding: 0 0 12px;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
     }
@@ -552,9 +552,9 @@
     }
 
     .what-we-do-slider {
-      max-width: min(980px, 86vw);
-      margin: 6px auto 0;
-      padding: 0 4px 10px;
+      width: 100%;
+      margin: 6px 0 0;
+      padding: 0 4px 10px 0;
     }
 
     .what-we-do-slider input[type="range"] {
