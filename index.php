@@ -557,6 +557,13 @@
       font-weight: 700;
     }
 
+    .overview-metric .h6 {
+      color: #2c3968;
+      margin: 8px 0 0;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
     .activity-card {
       border-radius: 16px;
       border: 1px solid #dce5ff;
@@ -1049,23 +1056,26 @@
         <div class="col-lg-8">
           <div class="dark-dashboard p-4 p-lg-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <h4 class="mb-0">Overview</h4>
-              <span class="badge rounded-pill text-bg-light border">Updated just now</span>
+              <h4 class="mb-0">Engagement Framework</h4>
+              <span class="badge rounded-pill text-bg-light border">Client-first delivery</span>
             </div>
+            <p class="text-secondary mb-4">A professional, transparent process focused on strategy, execution quality, and long-term partnership success.</p>
             <div class="row g-3 mb-3">
-              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Total Projects</small><div class="h4">128</div></div></div>
-              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Active Clients</small><div class="h4">84</div></div></div>
-              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Success Rate</small><div class="h4">98.6%</div></div></div>
-              <div class="col-6 col-md-3"><div class="overview-metric p-3"><small>Revenue</small><div class="h4">$24.8k</div></div></div>
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Discovery & Strategy</small><div class="h6 mb-0">Workshops, technical audits, and clear roadmapping before build.</div></div></div>
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Design & Build Excellence</small><div class="h6 mb-0">Human-centered design, scalable architecture, and modern engineering.</div></div></div>
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Quality & Governance</small><div class="h6 mb-0">Structured QA, security reviews, and measurable release standards.</div></div></div>
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Launch & Continuous Improvement</small><div class="h6 mb-0">Post-launch support, analytics-based iteration, and proactive optimization.</div></div></div>
             </div>
             <div class="activity-card p-4">
-              <div class="d-flex justify-content-between align-items-center">
-                <strong>Project Activity</strong>
-                <small class="text-secondary">Last 8 weeks</small>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <strong>How we collaborate</strong>
+                <small class="text-secondary">Professional light theme</small>
               </div>
-              <div class="activity-bars" aria-hidden="true">
-                <span style="height:40%"></span><span style="height:55%"></span><span style="height:48%"></span><span style="height:78%"></span><span style="height:66%"></span><span style="height:88%"></span><span style="height:72%"></span><span style="height:92%"></span>
-              </div>
+              <ul class="list-unstyled text-secondary mb-0">
+                <li class="mb-2">✓ Weekly stakeholder updates with documented actions.</li>
+                <li class="mb-2">✓ Milestone-based delivery with transparent timelines.</li>
+                <li class="mb-0">✓ Dedicated support channel for fast decisions and issue resolution.</li>
+              </ul>
             </div>
           </div>
         </div>
