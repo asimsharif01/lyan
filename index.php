@@ -37,13 +37,13 @@
       top: 10px;
       z-index: 1040;
       width: 100%;
-      transition: top .45s cubic-bezier(.22, 1, .36, 1),
-                  border-radius .45s cubic-bezier(.22, 1, .36, 1),
-                  margin-top .45s cubic-bezier(.22, 1, .36, 1),
-                  padding .45s cubic-bezier(.22, 1, .36, 1),
-                  box-shadow .45s cubic-bezier(.22, 1, .36, 1),
-                  border-color .45s cubic-bezier(.22, 1, .36, 1),
-                  background .45s cubic-bezier(.22, 1, .36, 1);
+      transform: translate3d(0, 0, 0);
+      will-change: transform, border-radius, box-shadow, background-color;
+      transition: transform .32s cubic-bezier(.22, 1, .36, 1),
+                  border-radius .32s cubic-bezier(.22, 1, .36, 1),
+                  box-shadow .32s cubic-bezier(.22, 1, .36, 1),
+                  border-color .32s cubic-bezier(.22, 1, .36, 1),
+                  background-color .32s cubic-bezier(.22, 1, .36, 1);
     }
 
     .navbar-wrap.is-compact {
@@ -57,6 +57,7 @@
       background: rgba(255, 255, 255, 0.94);
       box-shadow: 0 12px 30px rgba(30, 44, 122, 0.14);
       padding: 8px clamp(14px, 2.4vw, 32px);
+      transform: translate3d(0, -10px, 0);
     }
 
     body.header-stuck {
@@ -1052,19 +1053,32 @@
       if (!navWrap) return;
 
       let ticking = false;
+      let isCompact = false;
+      let stickyOffset = 0;
 
-      const syncStickyState = () => {
-        const shouldStick = window.scrollY > 36;
+      const measureStickyOffset = () => {
+        const currentCompactState = navWrap.classList.contains('is-compact');
+        navWrap.classList.add('is-compact');
+        stickyOffset = navWrap.offsetHeight + 10;
+        if (!currentCompactState) navWrap.classList.remove('is-compact');
+      };
+
+      const setStickyState = (shouldStick) => {
+        if (shouldStick === isCompact) return;
+        isCompact = shouldStick;
         navWrap.classList.toggle('is-compact', shouldStick);
 
         if (shouldStick) {
-          document.body.style.setProperty('--sticky-nav-offset', `${navWrap.offsetHeight + 10}px`);
+          document.body.style.setProperty('--sticky-nav-offset', `${stickyOffset}px`);
           document.body.classList.add('header-stuck');
         } else {
           document.body.style.setProperty('--sticky-nav-offset', '0px');
           document.body.classList.remove('header-stuck');
         }
+      };
 
+      const syncStickyState = () => {
+        setStickyState(window.scrollY > 36);
         ticking = false;
       };
 
@@ -1075,7 +1089,12 @@
         }
       }, { passive: true });
 
-      window.addEventListener('resize', syncStickyState);
+      window.addEventListener('resize', () => {
+        measureStickyOffset();
+        setStickyState(window.scrollY > 36);
+      });
+
+      measureStickyOffset();
       syncStickyState();
     })();
 
