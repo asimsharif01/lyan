@@ -768,6 +768,13 @@
   text-transform: uppercase;
   color: #4b4b4b;
 }
+
+    .scroll-drift {
+      --drift: 0px;
+      transform: translateY(var(--drift));
+      transition: transform .12s linear;
+      will-change: transform;
+    }
   </style>
 </head>
 <body>
@@ -857,7 +864,7 @@
 
    
 
-    <section class="mt-5 what-we-do-shell">
+    <section class="mt-5 what-we-do-shell" data-drift-section>
       <div class="px-0">
         <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
           <div>
@@ -871,39 +878,39 @@
   <div class="what-we-do-track" data-what-we-do-track>
 
     <div class="what-we-do-panel">
-      <article class="what-we-do-card">
+      <article class="what-we-do-card scroll-drift" data-drift-depth="18">
   <div class="what-we-do-icon tone-teal">FAST</div>
   <p><span class="gradient-text-1">Build faster with scalable solutions</span> designed for modern businesses.</p>
 </article>
 
-<article class="what-we-do-card">
+<article class="what-we-do-card scroll-drift" data-drift-depth="18">
   <div class="what-we-do-icon tone-green">CUSTOM</div>
   <p><span class="gradient-text-2">Customize your digital infrastructure</span> with flexible and powerful tools.</p>
 </article>
 
-<article class="what-we-do-card">
+<article class="what-we-do-card scroll-drift" data-drift-depth="18">
   <div class="what-we-do-icon tone-violet">TAILORED</div>
   <p>Tailored for you. <span class="gradient-text-3">We create solutions that match your exact business needs.</span></p>
 </article>
 
-<article class="what-we-do-card">
+<article class="what-we-do-card scroll-drift" data-drift-depth="18">
   <div class="what-we-do-icon tone-blue">INTEGRATE</div>
   <p><span class="gradient-text-4">Seamless system integration.</span> Connect your tools and workflows effortlessly.</p>
 </article>
 
-<article class="what-we-do-card">
+<article class="what-we-do-card scroll-drift" data-drift-depth="18">
   <div class="what-we-do-icon tone-green">FLEXIBLE</div>
   <p>Flexible pricing models with <span class="gradient-text-5">cost-effective plans</span> for every scale.</p>
 </article>
 
-<article class="what-we-do-card">
+<article class="what-we-do-card scroll-drift" data-drift-depth="18">
   <div class="what-we-do-icon tone-green">INSIGHTS</div>
   <p><span class="gradient-text-6">Data-driven insights</span> to help you make smarter business decisions.</p>
 </article>
     </div>
 
     <div class="what-we-do-panel">
-      <article class="what-we-do-card wide" style="grid-column: span 2;">
+      <article class="what-we-do-card wide scroll-drift" data-drift-depth="24" style="grid-column: span 2;">
         <div>
           <small class="text-uppercase fw-semibold text-secondary">Expert Consultation</small>
           <p class="mt-2">Work directly with our specialists to plan and execute your tech strategy. Lorem ipsum dolor <span class="gradient-text-6">sit amet consectetur adipisicing elit</span>. Porro ex esse earum temporibus, necessitatibus fugit maxime asperiores reiciendis accusamus sint sed iste adipisci.</p>
@@ -911,7 +918,7 @@
         <div class="what-we-do-visual specialist"></div>
       </article>
 
-      <article class="what-we-do-card wide">
+      <article class="what-we-do-card wide scroll-drift" data-drift-depth="22">
         <div>
           <small class="text-uppercase fw-semibold text-secondary">Remote Collaboration</small>
           <p class="mt-2">Engage with our team through <span class="gradient-text-3">seamless online sessions</span> and real-time support.</p>
@@ -921,7 +928,7 @@
     </div>
 
     <div class="what-we-do-panel">
-      <article class="what-we-do-card wide" style="grid-column: span 3;">
+      <article class="what-we-do-card wide scroll-drift" data-drift-depth="28" style="grid-column: span 3;">
         <div>
           <small class="text-uppercase fw-semibold text-secondary">Deployment & Support</small>
           <p class="mt-2">From implementation to scaling, we ensure smooth delivery and ongoing support. <span class="gradient-text-1">Lorem ipsum dolor sit amet consectetur adipisicing</span> elit. Cum, quisquam dolorem cupiditate ipsa sequi, libero pariatur repellendus nisi ipsam vero alias. Error nobis voluptatum optio quia saepe numquam, suscipit temporibus</p>
@@ -1104,6 +1111,33 @@
       track.addEventListener('scroll', updateControls, { passive: true });
       window.addEventListener('resize', updateControls);
       updateControls();
+    })();
+
+
+    (() => {
+      const section = document.querySelector('[data-drift-section]');
+      if (!section) return;
+
+      const blocks = section.querySelectorAll('[data-drift-depth]');
+      if (!blocks.length) return;
+
+      const updateDrift = () => {
+        const rect = section.getBoundingClientRect();
+        const viewport = window.innerHeight || document.documentElement.clientHeight;
+        const progress = (viewport - rect.top) / (viewport + rect.height);
+        const clamped = Math.min(Math.max(progress, 0), 1);
+
+        blocks.forEach((block, idx) => {
+          const depth = Number(block.dataset.driftDepth || 16);
+          const direction = idx % 2 === 0 ? 1 : -1;
+          const drift = (clamped - 0.5) * 2 * depth * direction;
+          block.style.setProperty('--drift', `${drift.toFixed(1)}px`);
+        });
+      };
+
+      updateDrift();
+      window.addEventListener('scroll', updateDrift, { passive: true });
+      window.addEventListener('resize', updateDrift);
     })();
 
     (() => {
