@@ -802,17 +802,20 @@
     .site-footer {
       position: relative;
       margin-top: 2rem;
-      border-radius: 28px;
+      border-radius: 0;
       padding: clamp(2rem, 4vw, 3.2rem);
       background:
-        radial-gradient(950px 340px at -5% 0%, rgba(129, 98, 255, .22), transparent 56%),
-        radial-gradient(780px 300px at 105% 15%, rgba(76, 211, 255, .2), transparent 52%),
-        linear-gradient(130deg, #070d2f 0%, #0f1a56 44%, #14236d 100%);
-      border: 1px solid rgba(190, 209, 255, .24);
-      color: #e9eeff;
+        radial-gradient(900px 320px at -10% 0%, rgba(112, 126, 255, .16), transparent 54%),
+        radial-gradient(760px 280px at 105% 20%, rgba(87, 196, 255, .14), transparent 50%),
+        linear-gradient(130deg, #f8faff 0%, #f3f6ff 46%, #eef4ff 100%);
+      border-top: 1px solid rgba(174, 189, 255, .45);
+      color: #1b2755;
       overflow: hidden;
       isolation: isolate;
-      box-shadow: 0 26px 56px rgba(10, 18, 62, .42);
+      box-shadow: 0 -10px 32px rgba(84, 101, 198, .10);
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
     }
 
     .site-footer::before {
@@ -827,47 +830,47 @@
       z-index: -1;
     }
 
-    .site-footer a { text-decoration: none; color: #d6deff; transition: color .2s ease, transform .2s ease; display: inline-block; }
-    .site-footer a:hover { color: #ffffff; transform: translateX(2px); }
+    .site-footer a { text-decoration: none; color: #425293; transition: color .2s ease, transform .2s ease; display: inline-block; }
+    .site-footer a:hover { color: #263f9a; transform: translateX(2px); }
     .footer-brand h3 { letter-spacing: -.02em; }
-    .footer-kicker { color: #9fb2ff; text-transform: uppercase; letter-spacing: .11em; font-size: .72rem; font-weight: 700; }
-    .footer-strap { color: #bfcaf5; max-width: 300px; }
-    .footer-list h6 { color: #fff; margin-bottom: .75rem; letter-spacing: .01em; }
-    .footer-list a { margin: .24rem 0; color: #c9d4ff; }
+    .footer-kicker { color: #5f73c8; text-transform: uppercase; letter-spacing: .11em; font-size: .72rem; font-weight: 700; }
+    .footer-strap { color: #596a9f; max-width: 340px; }
+    .footer-list h6 { color: #12205a; margin-bottom: .75rem; letter-spacing: .01em; }
+    .footer-list a { margin: .24rem 0; color: #4b5f9f; }
     .footer-contact {
-      border: 1px solid rgba(189, 204, 255, .25);
-      background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+      border: 1px solid rgba(146, 166, 245, .35);
+      background: linear-gradient(145deg, rgba(255,255,255,.84), rgba(239,244,255,.85));
       backdrop-filter: blur(6px);
       border-radius: 18px;
       padding: 1rem;
     }
 
     .footer-metrics {
-      border-top: 1px solid rgba(203, 214, 255, .24);
+      border-top: 1px solid rgba(170, 186, 245, .45);
       margin-top: 1.6rem;
       padding-top: 1rem;
     }
 
-    .footer-stat { color: #e8edff; }
+    .footer-stat { color: #24356d; }
     .footer-stat strong { font-size: 1.1rem; letter-spacing: -.02em; display: block; }
-    .footer-stat small { color: #9fb0e6; text-transform: uppercase; letter-spacing: .07em; font-size: .68rem; }
+    .footer-stat small { color: #6378b6; text-transform: uppercase; letter-spacing: .07em; font-size: .68rem; }
 
     .newsletter-shell {
       border-radius: 999px;
       padding: 5px;
-      border: 1px solid rgba(193, 210, 255, .32);
-      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(157, 179, 255, .45);
+      background: rgba(255, 255, 255, .85);
     }
 
     .newsletter-shell .form-control {
       background: transparent;
       border: 0;
-      color: #fff;
+      color: #1f2e68;
       box-shadow: none;
       font-size: .92rem;
     }
 
-    .newsletter-shell .form-control::placeholder { color: #c7d3ff; }
+    .newsletter-shell .form-control::placeholder { color: #7c8fcb; }
     .newsletter-shell .btn {
       border-radius: 999px;
       border: 0;
@@ -1249,18 +1252,18 @@
           <h3 class="d-flex align-items-center gap-2 fw-bold mt-2 mb-3"><span class="logo-dot">L</span> Lyan</h3>
           <p class="footer-strap mb-4">We design category-defining digital experiences where strategy, storytelling, and engineering move as one system.</p>
           <div class="footer-contact d-inline-flex flex-column gap-1">
-            <small class="text-uppercase text-white-50">Contact</small>
+            <small class="text-uppercase text-secondary">Contact</small>
             <a href="mailto:hello@lyan.studio">hello@lyan.studio</a>
             <a href="tel:+1-415-555-2109">+1 (415) 555-2109</a>
           </div>
         </div>
-        <div class="col-6 col-lg-2 footer-list"><h6>Services</h6><a href="#">Platform Engineering</a><a href="#">AI Integration</a><a href="#">Product Design</a><a href="#">Growth Systems</a></div>
-        <div class="col-6 col-lg-2 footer-list"><h6>Company</h6><a href="#">About Lyan</a><a href="#">Case Studies</a><a href="#">Careers</a><a href="#">Press Kit</a></div>
+        <div class="col-6 col-lg-2 footer-list"><h6>Services</h6><a href="#">Platform Engineering</a><a href="#">AI Integration</a><a href="#">Product Design</a><a href="#">Growth Systems</a><a href="#">Security Audits</a></div>
+        <div class="col-6 col-lg-2 footer-list"><h6>Company</h6><a href="#">About Lyan</a><a href="#">Case Studies</a><a href="#">Careers</a><a href="#">Press Kit</a><a href="#">Knowledge Base</a></div>
         <div class="col-12 col-lg-4">
-          <h6 class="text-white mb-2">The Signal Letter</h6>
-          <p class="text-white-50 mb-3">A crisp weekly brief on product momentum, AI execution, and design systems that win markets.</p>
+          <h6 class="mb-2">The Signal Letter</h6>
+          <p class="text-secondary mb-3">A crisp weekly brief on product momentum, AI execution, and design systems that win markets.</p>
           <div class="newsletter-shell input-group mb-3"><input class="form-control" placeholder="Enter your email"><button class="btn">Join →</button></div>
-          <small class="text-white-50">By subscribing, you agree to our privacy terms.</small>
+          <small class="text-secondary">By subscribing, you agree to our privacy terms.</small>
         </div>
       </div>
       <div class="footer-metrics d-flex flex-wrap justify-content-between align-items-center gap-3">
@@ -1269,7 +1272,7 @@
           <div class="footer-stat"><strong>98%</strong><small>Client retention</small></div>
           <div class="footer-stat"><strong>22</strong><small>Countries served</small></div>
         </div>
-        <div class="text-white-50">© 2026 Lyan Studio. Crafted for ambitious teams.</div>
+        <div class="text-secondary">© 2026 Lyan Studio. Crafted for ambitious teams.</div>
       </div>
     </footer>
   </div>
