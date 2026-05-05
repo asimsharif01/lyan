@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Novatek Landing Page</title>
+  <title>Lyan Landing Page</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <style>
     :root {
@@ -874,8 +874,8 @@
     <div class="navbar-wrap">
       <nav class="navbar navbar-expand-lg bg-transparent">
         <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
-          <span class="logo-dot">N</span>
-          <span>Novatek</span>
+          <span class="logo-dot">L</span>
+          <span>Lyan</span>
           <span class="ai-chip">AI Native Studio</span>
         </a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#topNav"><span class="navbar-toggler-icon"></span></button>
@@ -954,13 +954,54 @@
       </div>
     </section>
 
-   
+   <section class="mt-5">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-4">
+          <small class="text-uppercase text-primary fw-bold">Why choose Lyan</small>
+          <h2 class="heading-medium">Technology. Innovation. Results.</h2>
+          <p class="text-secondary">We combine cutting-edge technologies with best practices to deliver solutions that drive real impact. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos reiciendis porro ad nihil? Rem labore velit est mollitia officiis inventore eveniet, magnam non ipsum vero quae magni, eius reprehenderit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit rem recusandae possimus voluptates voluptas assumenda laborum ad atque, placeat quas iure distinctio autem dolor sequi deserunt ratione at quaerat ducimus. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam ipsum ipsa suscipit corporis in sequi reiciendis veniam sed voluptas. Corrupti provident veniam quis tempore eaque blanditiis impedit, aut nemo labore!</p>
+          <ul class="list-unstyled text-secondary">
+            <li>✓ Agile Development Process</li>
+            <li>✓ Scalable & Secure Architecture</li>
+            <li>✓ On-Time Delivery</li>
+            <li>✓ Transparent Communication</li>
+          </ul>
+          <button class="btn btn-main btn-pill mt-2">More about us →</button>
+        </div>
+        <div class="col-lg-8">
+          <div class="dark-dashboard p-4 p-lg-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="mb-0">Engagement Framework</h4>
+              <span class="badge rounded-pill text-bg-light border">Client-first delivery</span>
+            </div>
+            <p class="text-secondary mb-4">A professional, transparent process focused on strategy, execution quality, and long-term partnership success.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Discovery & Strategy</small><div class="h6 mb-0">Workshops, technical audits, and clear roadmapping before build.</div></div></div>
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Design & Build Excellence</small><div class="h6 mb-0">Human-centered design, scalable architecture, and modern engineering.</div></div></div>
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Quality & Governance</small><div class="h6 mb-0">Structured QA, security reviews, and measurable release standards.</div></div></div>
+              <div class="col-md-6"><div class="overview-metric p-3"><small>Launch & Continuous Improvement</small><div class="h6 mb-0">Post-launch support, analytics-based iteration, and proactive optimization.</div></div></div>
+            </div>
+            <div class="activity-card p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <strong>How we collaborate</strong>
+                <small class="text-secondary">Professional light theme</small>
+              </div>
+              <ul class="list-unstyled text-secondary mb-0">
+                <li class="mb-2">✓ Weekly stakeholder updates with documented actions.</li>
+                <li class="mb-2">✓ Milestone-based delivery with transparent timelines.</li>
+                <li class="mb-0">✓ Dedicated support channel for fast decisions and issue resolution.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="mt-5 what-we-do-shell" data-drift-section>
       <div class="px-0">
         <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
           <div>
-            <h2 class="what-we-do-headline mb-0"><strong class="gradient-text">Nove Tech next Gen.</strong> Even more reasons to with us.</h2>
+            <h2 class="what-we-do-headline mb-0"><strong class="gradient-text">Lyan next Gen.</strong> Even more reasons to with us.</h2>
           </div>
         </div>
       </div>
@@ -1039,48 +1080,7 @@
     </section>
      
 
-    <section class="mt-5">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-4">
-          <small class="text-uppercase text-primary fw-bold">Why choose novatek</small>
-          <h2 class="heading-medium">Technology. Innovation. Results.</h2>
-          <p class="text-secondary">We combine cutting-edge technologies with best practices to deliver solutions that drive real impact.</p>
-          <ul class="list-unstyled text-secondary">
-            <li>✓ Agile Development Process</li>
-            <li>✓ Scalable & Secure Architecture</li>
-            <li>✓ On-Time Delivery</li>
-            <li>✓ Transparent Communication</li>
-          </ul>
-          <button class="btn btn-main btn-pill mt-2">More about us →</button>
-        </div>
-        <div class="col-lg-8">
-          <div class="dark-dashboard p-4 p-lg-5">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h4 class="mb-0">Engagement Framework</h4>
-              <span class="badge rounded-pill text-bg-light border">Client-first delivery</span>
-            </div>
-            <p class="text-secondary mb-4">A professional, transparent process focused on strategy, execution quality, and long-term partnership success.</p>
-            <div class="row g-3 mb-3">
-              <div class="col-md-6"><div class="overview-metric p-3"><small>Discovery & Strategy</small><div class="h6 mb-0">Workshops, technical audits, and clear roadmapping before build.</div></div></div>
-              <div class="col-md-6"><div class="overview-metric p-3"><small>Design & Build Excellence</small><div class="h6 mb-0">Human-centered design, scalable architecture, and modern engineering.</div></div></div>
-              <div class="col-md-6"><div class="overview-metric p-3"><small>Quality & Governance</small><div class="h6 mb-0">Structured QA, security reviews, and measurable release standards.</div></div></div>
-              <div class="col-md-6"><div class="overview-metric p-3"><small>Launch & Continuous Improvement</small><div class="h6 mb-0">Post-launch support, analytics-based iteration, and proactive optimization.</div></div></div>
-            </div>
-            <div class="activity-card p-4">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <strong>How we collaborate</strong>
-                <small class="text-secondary">Professional light theme</small>
-              </div>
-              <ul class="list-unstyled text-secondary mb-0">
-                <li class="mb-2">✓ Weekly stakeholder updates with documented actions.</li>
-                <li class="mb-2">✓ Milestone-based delivery with transparent timelines.</li>
-                <li class="mb-0">✓ Dedicated support channel for fast decisions and issue resolution.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     
 
@@ -1089,7 +1089,7 @@
         <div class="col-lg-7">
           <span class="tech-pill">Adaptive intelligence fabric</span>
           <h2 class="heading-medium mt-3 mb-2 text-white">A command layer built for ambitious tech teams.</h2>
-          <p class="text-white-50 mb-4">From product analytics to infrastructure health, Novatek unifies your mission-critical signals into one elegant operating view.</p>
+          <p class="text-white-50 mb-4">From product analytics to infrastructure health, Lyan unifies your mission-critical signals into one elegant operating view.</p>
           <div class="row g-3">
             <div class="col-sm-6">
               <article class="signal-card">
@@ -1143,13 +1143,13 @@
       <div class="d-flex justify-content-between align-items-end">
         <div>
           <small class="text-uppercase text-primary fw-bold">Testimonials</small>
-          <h2 class="heading-medium">Loved by teams<br/>around the world.</h2>
+          <h2 class="heading-medium">Loved by teams around the <span class="gradient-text">world</span>.</h2>
         </div>
         <a href="#" class="text-decoration-none fw-semibold">View all testimonials →</a>
       </div>
       <div class="testimonial-stage" data-testimonial-stage>
         <div class="row g-3 mt-1 testimonial-grid">
-          <div class="col-md-4 testimonial-item"><div class="quote-card"><p>“Novatek transformed our idea into a powerful product. Their team is professional, responsive, and truly cares.”</p><strong>Sarah Johnson</strong><br><small class="text-secondary">CEO, TechNova</small></div></div>
+          <div class="col-md-4 testimonial-item"><div class="quote-card"><p>“Lyan transformed our idea into a powerful product. Their team is professional, responsive, and truly cares.”</p><strong>Sarah Johnson</strong><br><small class="text-secondary">CEO, TechNova</small></div></div>
           <div class="col-md-4 testimonial-item"><div class="quote-card"><p>“The quality of work and attention to detail is exceptional. They delivered on time and exceeded expectations.”</p><strong>Michael Chen</strong><br><small class="text-secondary">CTO, DataFlow</small></div></div>
           <div class="col-md-4 testimonial-item"><div class="quote-card"><p>“Amazing team! They understood our requirements perfectly and built a solution that scaled our business.”</p><strong>David Wilson</strong><br><small class="text-secondary">Founder, Shoply</small></div></div>
         </div>
@@ -1169,7 +1169,7 @@
     <footer class="py-5">
       <div class="row g-4">
         <div class="col-lg-3">
-          <div class="d-flex align-items-center gap-2 fw-bold fs-4"><span class="logo-dot">N</span> Novatek</div>
+          <div class="d-flex align-items-center gap-2 fw-bold fs-4"><span class="logo-dot">L</span> Lyan</div>
           <p class="text-secondary mt-3">We build digital products that help businesses grow, scale, and succeed in the digital world.</p>
         </div>
         <div class="col-6 col-lg-2"><h6>Services</h6><a href="#">Web Development</a><br><a href="#">Mobile Apps</a><br><a href="#">UI/UX Design</a><br><a href="#">Cloud</a></div>
@@ -1177,7 +1177,7 @@
         <div class="col-6 col-lg-2"><h6>Resources</h6><a href="#">Documentation</a><br><a href="#">Case Studies</a><br><a href="#">FAQs</a><br><a href="#">Privacy Policy</a></div>
         <div class="col-6 col-lg-3"><h6>Newsletter</h6><p class="text-secondary">Get the latest updates and insights from our team.</p><div class="input-group"><input class="form-control" placeholder="Enter your email"><button class="btn btn-primary">➤</button></div></div>
       </div>
-      <div class="text-center text-secondary mt-4">© 2026 Novatek. All rights reserved.</div>
+      <div class="text-center text-secondary mt-4">© 2026 Lyan. All rights reserved.</div>
     </footer>
   </div>
 
