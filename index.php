@@ -237,11 +237,75 @@
       box-shadow: 0 8px 28px rgba(100, 98, 255, .06);
     }
 
-    .logo-row span {
-      font-size: 1.55rem;
-      color: #7d84ab;
+    .logo-row {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 45%, #f5f8ff 100%);
+      border: 1px solid rgba(111, 121, 255, 0.14);
+    }
+
+    .logo-row::before,
+    .logo-row::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: clamp(36px, 8vw, 90px);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .logo-row::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(248, 249, 255, 1), rgba(248, 249, 255, 0));
+    }
+
+    .logo-row::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(245, 248, 255, 1), rgba(245, 248, 255, 0));
+    }
+
+    .logo-marquee {
+      display: flex;
+      width: max-content;
+      gap: 14px;
+      margin-top: 16px;
+      animation: logo-marquee 28s linear infinite;
+    }
+
+    .logo-row:hover .logo-marquee {
+      animation-play-state: paused;
+    }
+
+    .logo-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(124, 134, 180, 0.25);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      font-size: 0.97rem;
+      letter-spacing: 0.02em;
+      color: #4e5985;
       font-weight: 700;
-      opacity: .8;
+      box-shadow: 0 8px 20px rgba(86, 101, 241, 0.08);
+      white-space: nowrap;
+    }
+
+    .logo-chip i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, #6f79ff, #8ec5ff);
+      box-shadow: 0 0 0 5px rgba(111, 121, 255, 0.12);
+      display: inline-block;
+    }
+
+    @keyframes logo-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .mini-stat {
@@ -630,8 +694,8 @@
 
     <section class="section-card p-4 mt-4 logo-row">
       <small class="text-uppercase text-primary fw-bold">Trusted by Innovative Companies</small>
-      <div class="d-flex justify-content-between flex-wrap mt-3 gap-3">
-        <span>Google</span><span>Microsoft</span><span>airbnb</span><span>amazon</span><span>Uber</span><span>slack</span><span>shopify</span><span>Notion</span>
+      <div class="logo-marquee" aria-label="Trusted companies" data-logo-marquee>
+        <span class="logo-chip"><i></i>Google</span><span class="logo-chip"><i></i>Microsoft</span><span class="logo-chip"><i></i>Airbnb</span><span class="logo-chip"><i></i>Amazon</span><span class="logo-chip"><i></i>Uber</span><span class="logo-chip"><i></i>Slack</span><span class="logo-chip"><i></i>Shopify</span><span class="logo-chip"><i></i>Notion</span><span class="logo-chip"><i></i>Stripe</span><span class="logo-chip"><i></i>Figma</span>
       </div>
     </section>
 
@@ -897,6 +961,12 @@
 
       window.addEventListener('resize', syncStickyState);
       syncStickyState();
+    })();
+
+    (() => {
+      const marquee = document.querySelector('[data-logo-marquee]');
+      if (!marquee) return;
+      marquee.innerHTML += marquee.innerHTML;
     })();
 
     (() => {
