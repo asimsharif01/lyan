@@ -405,8 +405,9 @@
       border: 0;
       border-radius: 0;
       padding: 0;
-      width: 100%;
-      margin-inline: 0;
+      width: calc(100% + (50vw - 50%));
+      margin-left: 0;
+      margin-right: calc(50% - 50vw);
       overflow-x: clip;
     }
 
