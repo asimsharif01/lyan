@@ -799,7 +799,83 @@
       background-size: 45% 45%;
     }
 
-    footer a { text-decoration: none; color: #60689a; }
+    .site-footer {
+      position: relative;
+      margin-top: 2rem;
+      border-radius: 28px;
+      padding: clamp(2rem, 4vw, 3.2rem);
+      background:
+        radial-gradient(950px 340px at -5% 0%, rgba(129, 98, 255, .22), transparent 56%),
+        radial-gradient(780px 300px at 105% 15%, rgba(76, 211, 255, .2), transparent 52%),
+        linear-gradient(130deg, #070d2f 0%, #0f1a56 44%, #14236d 100%);
+      border: 1px solid rgba(190, 209, 255, .24);
+      color: #e9eeff;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 26px 56px rgba(10, 18, 62, .42);
+    }
+
+    .site-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at 50% 32%, black 42%, transparent 92%);
+      pointer-events: none;
+      opacity: .45;
+      z-index: -1;
+    }
+
+    .site-footer a { text-decoration: none; color: #d6deff; transition: color .2s ease, transform .2s ease; display: inline-block; }
+    .site-footer a:hover { color: #ffffff; transform: translateX(2px); }
+    .footer-brand h3 { letter-spacing: -.02em; }
+    .footer-kicker { color: #9fb2ff; text-transform: uppercase; letter-spacing: .11em; font-size: .72rem; font-weight: 700; }
+    .footer-strap { color: #bfcaf5; max-width: 300px; }
+    .footer-list h6 { color: #fff; margin-bottom: .75rem; letter-spacing: .01em; }
+    .footer-list a { margin: .24rem 0; color: #c9d4ff; }
+    .footer-contact {
+      border: 1px solid rgba(189, 204, 255, .25);
+      background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+      backdrop-filter: blur(6px);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .footer-metrics {
+      border-top: 1px solid rgba(203, 214, 255, .24);
+      margin-top: 1.6rem;
+      padding-top: 1rem;
+    }
+
+    .footer-stat { color: #e8edff; }
+    .footer-stat strong { font-size: 1.1rem; letter-spacing: -.02em; display: block; }
+    .footer-stat small { color: #9fb0e6; text-transform: uppercase; letter-spacing: .07em; font-size: .68rem; }
+
+    .newsletter-shell {
+      border-radius: 999px;
+      padding: 5px;
+      border: 1px solid rgba(193, 210, 255, .32);
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .newsletter-shell .form-control {
+      background: transparent;
+      border: 0;
+      color: #fff;
+      box-shadow: none;
+      font-size: .92rem;
+    }
+
+    .newsletter-shell .form-control::placeholder { color: #c7d3ff; }
+    .newsletter-shell .btn {
+      border-radius: 999px;
+      border: 0;
+      background: linear-gradient(120deg, #78b7ff, #8a76ff);
+      color: #fff;
+      padding: .5rem 1rem;
+      font-weight: 600;
+    }
 
     @media (max-width: 991px) {
       .hero-art { min-height: 420px; margin-top: 16px; }
@@ -1166,18 +1242,35 @@
       <button class="btn btn-light btn-pill px-4">Start a Project →</button>
     </section>
 
-    <footer class="py-5">
-      <div class="row g-4">
-        <div class="col-lg-3">
-          <div class="d-flex align-items-center gap-2 fw-bold fs-4"><span class="logo-dot">L</span> Lyan</div>
-          <p class="text-secondary mt-3">We build digital products that help businesses grow, scale, and succeed in the digital world.</p>
+    <footer class="site-footer">
+      <div class="row g-4 g-lg-5">
+        <div class="col-lg-4 footer-brand">
+          <span class="footer-kicker">AI Product Studio</span>
+          <h3 class="d-flex align-items-center gap-2 fw-bold mt-2 mb-3"><span class="logo-dot">L</span> Lyan</h3>
+          <p class="footer-strap mb-4">We design category-defining digital experiences where strategy, storytelling, and engineering move as one system.</p>
+          <div class="footer-contact d-inline-flex flex-column gap-1">
+            <small class="text-uppercase text-white-50">Contact</small>
+            <a href="mailto:hello@lyan.studio">hello@lyan.studio</a>
+            <a href="tel:+1-415-555-2109">+1 (415) 555-2109</a>
+          </div>
         </div>
-        <div class="col-6 col-lg-2"><h6>Services</h6><a href="#">Web Development</a><br><a href="#">Mobile Apps</a><br><a href="#">UI/UX Design</a><br><a href="#">Cloud</a></div>
-        <div class="col-6 col-lg-2"><h6>Company</h6><a href="#">About Us</a><br><a href="#">Our Work</a><br><a href="#">Careers</a><br><a href="#">Contact</a></div>
-        <div class="col-6 col-lg-2"><h6>Resources</h6><a href="#">Documentation</a><br><a href="#">Case Studies</a><br><a href="#">FAQs</a><br><a href="#">Privacy Policy</a></div>
-        <div class="col-6 col-lg-3"><h6>Newsletter</h6><p class="text-secondary">Get the latest updates and insights from our team.</p><div class="input-group"><input class="form-control" placeholder="Enter your email"><button class="btn btn-primary">➤</button></div></div>
+        <div class="col-6 col-lg-2 footer-list"><h6>Services</h6><a href="#">Platform Engineering</a><a href="#">AI Integration</a><a href="#">Product Design</a><a href="#">Growth Systems</a></div>
+        <div class="col-6 col-lg-2 footer-list"><h6>Company</h6><a href="#">About Lyan</a><a href="#">Case Studies</a><a href="#">Careers</a><a href="#">Press Kit</a></div>
+        <div class="col-12 col-lg-4">
+          <h6 class="text-white mb-2">The Signal Letter</h6>
+          <p class="text-white-50 mb-3">A crisp weekly brief on product momentum, AI execution, and design systems that win markets.</p>
+          <div class="newsletter-shell input-group mb-3"><input class="form-control" placeholder="Enter your email"><button class="btn">Join →</button></div>
+          <small class="text-white-50">By subscribing, you agree to our privacy terms.</small>
+        </div>
       </div>
-      <div class="text-center text-secondary mt-4">© 2026 Lyan. All rights reserved.</div>
+      <div class="footer-metrics d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div class="d-flex flex-wrap gap-4">
+          <div class="footer-stat"><strong>130+</strong><small>Global launches</small></div>
+          <div class="footer-stat"><strong>98%</strong><small>Client retention</small></div>
+          <div class="footer-stat"><strong>22</strong><small>Countries served</small></div>
+        </div>
+        <div class="text-white-50">© 2026 Lyan Studio. Crafted for ambitious teams.</div>
+      </div>
     </footer>
   </div>
 
