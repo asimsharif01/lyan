@@ -533,9 +533,82 @@
       box-shadow: 0 24px 45px rgba(53, 56, 164, .34);
     }
 
+    .process-constellation {
+      margin-top: 18px;
+      border: 1px solid rgba(73, 93, 194, .18);
+      border-radius: 28px;
+      background:
+        radial-gradient(1200px 260px at 8% -10%, rgba(127, 108, 255, .15), transparent 45%),
+        radial-gradient(1000px 260px at 92% 120%, rgba(64, 208, 255, .14), transparent 48%),
+        #ffffff;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-constellation::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(90deg, rgba(95, 111, 220, .08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(95, 111, 220, .08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 44%, transparent 100%);
+      pointer-events: none;
+    }
+
     .process-step {
-      text-align: left;
-      padding: 12px;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(130, 145, 235, .28);
+      background: linear-gradient(160deg, rgba(255,255,255,.98), rgba(245, 248, 255, .95));
+      border-radius: 18px;
+      padding: 18px 16px;
+      min-height: 165px;
+      box-shadow: 0 12px 24px rgba(40, 53, 126, .08);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .process-step:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 36px rgba(52, 76, 186, .18);
+      border-color: rgba(98, 118, 234, .5);
+    }
+
+    .process-step strong {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(140deg, #14246f, #4763eb);
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: .08em;
+      margin-bottom: 14px;
+    }
+
+    .process-step h6 {
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+      color: #0f1746;
+    }
+
+    .process-step p {
+      margin-bottom: 0;
+      color: #5f668e;
+      font-size: .92rem;
+      line-height: 1.45;
+    }
+
+    .process-link {
+      position: relative;
+      z-index: 1;
+      color: #3145b5;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: .02em;
     }
 
     .quote-card {
@@ -967,15 +1040,20 @@
     </section>
 
     <section class="mt-5">
-      <small class="text-uppercase text-primary fw-bold">Why process</small>
-      <h2 class="heading-medium">A seamless process from<br/>idea to launch</h2>
-      <div class="row mt-2 g-2">
-        <div class="col-md-2"><div class="process-step"><strong>01</strong><div>Discover</div><small class="text-secondary">Know your goals.</small></div></div>
-        <div class="col-md-2"><div class="process-step"><strong>02</strong><div>Plan</div><small class="text-secondary">Roadmap strategy.</small></div></div>
-        <div class="col-md-2"><div class="process-step"><strong>03</strong><div>Design</div><small class="text-secondary">Create UI/UX.</small></div></div>
-        <div class="col-md-2"><div class="process-step"><strong>04</strong><div>Develop</div><small class="text-secondary">Build solutions.</small></div></div>
-        <div class="col-md-2"><div class="process-step"><strong>05</strong><div>Test</div><small class="text-secondary">Ensure quality.</small></div></div>
-        <div class="col-md-2"><div class="process-step"><strong>06</strong><div>Launch</div><small class="text-secondary">Deploy and support.</small></div></div>
+      <small class="text-uppercase text-primary fw-bold">Execution architecture</small>
+      <h2 class="heading-medium">From signal to scale —<br/>our elite launch loop</h2>
+      <div class="process-constellation">
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4"><article class="process-step"><strong>01</strong><h6>Signal Scan</h6><p>Decode market intent, friction, and opportunity zones before a single build decision is made.</p></article></div>
+          <div class="col-md-6 col-lg-4"><article class="process-step"><strong>02</strong><h6>Blueprint Sprint</h6><p>Translate goals into a precision roadmap with success metrics, release lanes, and risk buffers.</p></article></div>
+          <div class="col-md-6 col-lg-4"><article class="process-step"><strong>03</strong><h6>Experience Craft</h6><p>Design interface systems that feel premium, intuitive, and conversion-focused on every screen.</p></article></div>
+          <div class="col-md-6 col-lg-4"><article class="process-step"><strong>04</strong><h6>Velocity Build</h6><p>Engineer scalable products using modular architecture, automation, and performance-first standards.</p></article></div>
+          <div class="col-md-6 col-lg-4"><article class="process-step"><strong>05</strong><h6>Proof Layer</h6><p>Stress-test reliability, accessibility, and security with scenario-based QA and observability checks.</p></article></div>
+          <div class="col-md-6 col-lg-4"><article class="process-step"><strong>06</strong><h6>Momentum Launch</h6><p>Ship with confidence, monitor adoption in real time, and iterate fast with post-launch intelligence.</p></article></div>
+        </div>
+        <div class="mt-3 d-flex justify-content-end">
+          <a href="#" class="process-link">View launch methodology ↗</a>
+        </div>
       </div>
     </section>
 
