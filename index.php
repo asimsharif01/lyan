@@ -433,7 +433,7 @@
       display: flex;
       gap: 16px;
       overflow-x: auto;
-      padding: 10px var(--what-we-do-gutter) 12px;
+      padding: 0px var(--what-we-do-gutter) 12px;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
     }
@@ -754,36 +754,13 @@
       </div>
     </section>
 
-    <section class="metrics-grid p-2 p-md-3 mt-4">
-      <div class="row g-2 text-center">
-        <div class="col-md-6 col-lg mini-stat">
-          <h3 class="mini-stat-number"><span data-counter data-target="250" data-decimals="0">0</span><span class="suffix">+</span></h3>
-          <p class="mini-stat-label">Projects Completed</p>
-        </div>
-        <div class="col-md-6 col-lg mini-stat">
-          <h3 class="mini-stat-number"><span data-counter data-target="150" data-decimals="0">0</span><span class="suffix">+</span></h3>
-          <p class="mini-stat-label">Happy Clients</p>
-        </div>
-        <div class="col-md-6 col-lg mini-stat">
-          <h3 class="mini-stat-number"><span data-counter data-target="10" data-decimals="0">0</span><span class="suffix">+</span></h3>
-          <p class="mini-stat-label">Years of Experience</p>
-        </div>
-        <div class="col-md-6 col-lg mini-stat">
-          <h3 class="mini-stat-number"><span data-counter data-target="99.9" data-decimals="1">0</span><span class="suffix">%</span></h3>
-          <p class="mini-stat-label">Uptime & Reliability</p>
-        </div>
-        <div class="col-12 mini-stat">
-          <h3 class="mini-stat-number">24/7</h3>
-          <p class="mini-stat-label">Support Available</p>
-        </div>
-      </div>
-    </section>
+   
 
     <section class="mt-5 what-we-do-shell">
-      <div class="px-3 px-md-4 px-xl-5">
+      <div class="px-0">
         <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
           <div>
-            <h2 class="what-we-do-headline mb-0"><strong>The Apple Store difference.</strong> Even more reasons to shop with us.</h2>
+            <h2 class="what-we-do-headline mb-0"><strong>Nove Tech next Gen.</strong> Even more reasons to with us.</h2>
           </div>
         </div>
       </div>
@@ -850,6 +827,30 @@
         <input type="range" min="0" max="100" value="0" step="1" aria-label="Slide to see more" data-what-we-do-slider>
       </div>
     </section>
+     <section class="metrics-grid p-2 p-md-3 mt-4">
+      <div class="row g-2 text-center">
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="250" data-decimals="0">0</span><span class="suffix">+</span></h3>
+          <p class="mini-stat-label">Projects Completed</p>
+        </div>
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="150" data-decimals="0">0</span><span class="suffix">+</span></h3>
+          <p class="mini-stat-label">Happy Clients</p>
+        </div>
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="10" data-decimals="0">0</span><span class="suffix">+</span></h3>
+          <p class="mini-stat-label">Years of Experience</p>
+        </div>
+        <div class="col-md-6 col-lg mini-stat">
+          <h3 class="mini-stat-number"><span data-counter data-target="99.9" data-decimals="1">0</span><span class="suffix">%</span></h3>
+          <p class="mini-stat-label">Uptime & Reliability</p>
+        </div>
+        <div class="col-12 mini-stat">
+          <h3 class="mini-stat-number">24/7</h3>
+          <p class="mini-stat-label">Support Available</p>
+        </div>
+      </div>
+    </section>
 
     <section class="mt-5">
       <div class="row g-4 align-items-center">
@@ -879,6 +880,8 @@
         </div>
       </div>
     </section>
+
+    
 
     <section class="modern-strip mt-5 p-4 p-md-5">
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
