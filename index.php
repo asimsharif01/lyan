@@ -619,6 +619,46 @@
       height: 100%;
     }
 
+    .testimonial-stage {
+      position: relative;
+      margin-top: 16px;
+      border-radius: 24px;
+      padding: clamp(16px, 2.6vw, 28px);
+      border: 1px solid #e4e9ff;
+      background: radial-gradient(circle at 8% 0%, rgba(111, 135, 255, .18), transparent 44%), linear-gradient(145deg, #ffffff, #f5f8ff);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .testimonial-stage::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(118, 144, 255, .24) 0, rgba(118, 144, 255, 0) 70%);
+      top: -180px;
+      right: -140px;
+      animation: testimonialFloat 10s ease-in-out infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .testimonial-grid { row-gap: 14px; }
+    .testimonial-item { transition: transform .55s cubic-bezier(.18,.9,.25,1), opacity .5s ease; transform: scale(.94); opacity: .55; }
+    .testimonial-item .quote-card { border: 1px solid rgba(122, 144, 255, .2); box-shadow: 0 10px 24px rgba(39, 52, 122, .08); transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease; transform-origin: center; }
+    .testimonial-item.is-active { transform: scale(1); opacity: 1; }
+    .testimonial-item.is-active .quote-card { border-color: rgba(88, 112, 246, .5); box-shadow: 0 20px 40px rgba(60, 84, 205, .18); transform: translateY(-6px); }
+    .testimonial-item p { font-size: .96rem; color: #1b275f; margin-bottom: 14px; line-height: 1.55; }
+    .testimonial-item strong { color: #14205b; }
+    .testimonial-progress { height: 3px; border-radius: 999px; margin-top: 16px; background: rgba(54, 76, 190, .1); overflow: hidden; }
+    .testimonial-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #4d6cf4, #8a61ff); transition: width .22s linear; }
+
+    @keyframes testimonialFloat {
+      0%, 100% { transform: translate3d(0,0,0); }
+      50% { transform: translate3d(-12px, 16px, 0); }
+    }
+
     .cta-band {
       border-radius: 22px;
       color: #fff;
@@ -1041,10 +1081,13 @@
         </div>
         <a href="#" class="text-decoration-none fw-semibold">View all testimonials →</a>
       </div>
-      <div class="row g-3 mt-1">
-        <div class="col-md-4"><div class="quote-card"><p>“Novatek transformed our idea into a powerful product. Their team is professional, responsive, and truly cares.”</p><strong>Sarah Johnson</strong><br><small class="text-secondary">CEO, TechNova</small></div></div>
-        <div class="col-md-4"><div class="quote-card"><p>“The quality of work and attention to detail is exceptional. They delivered on time and exceeded expectations.”</p><strong>Michael Chen</strong><br><small class="text-secondary">CTO, DataFlow</small></div></div>
-        <div class="col-md-4"><div class="quote-card"><p>“Amazing team! They understood our requirements perfectly and built a solution that scaled our business.”</p><strong>David Wilson</strong><br><small class="text-secondary">Founder, Shoply</small></div></div>
+      <div class="testimonial-stage" data-testimonial-stage>
+        <div class="row g-3 mt-1 testimonial-grid">
+          <div class="col-md-4 testimonial-item"><div class="quote-card"><p>“Novatek transformed our idea into a powerful product. Their team is professional, responsive, and truly cares.”</p><strong>Sarah Johnson</strong><br><small class="text-secondary">CEO, TechNova</small></div></div>
+          <div class="col-md-4 testimonial-item"><div class="quote-card"><p>“The quality of work and attention to detail is exceptional. They delivered on time and exceeded expectations.”</p><strong>Michael Chen</strong><br><small class="text-secondary">CTO, DataFlow</small></div></div>
+          <div class="col-md-4 testimonial-item"><div class="quote-card"><p>“Amazing team! They understood our requirements perfectly and built a solution that scaled our business.”</p><strong>David Wilson</strong><br><small class="text-secondary">Founder, Shoply</small></div></div>
+        </div>
+        <div class="testimonial-progress" aria-hidden="true"><span data-testimonial-progress></span></div>
       </div>
     </section>
 
@@ -1170,6 +1213,50 @@
       }, { threshold: 0.45 });
 
       counterEls.forEach((el) => observer.observe(el));
+    })();
+
+    (() => {
+      const stage = document.querySelector('[data-testimonial-stage]');
+      if (!stage) return;
+      const items = [...stage.querySelectorAll('.testimonial-item')];
+      const progress = stage.querySelector('[data-testimonial-progress]');
+      if (!items.length || !progress) return;
+
+      let active = 0;
+      let started = null;
+      const hold = 3800;
+
+      const paint = (index) => {
+        items.forEach((item, i) => item.classList.toggle('is-active', i === index));
+      };
+
+      const tick = (now) => {
+        if (started === null) started = now;
+        const elapsed = now - started;
+        const ratio = Math.min(elapsed / hold, 1);
+        progress.style.width = `${(ratio * 100).toFixed(2)}%`;
+
+        if (elapsed >= hold) {
+          active = (active + 1) % items.length;
+          started = now;
+          progress.style.width = '0%';
+          paint(active);
+        }
+
+        requestAnimationFrame(tick);
+      };
+
+      paint(active);
+      requestAnimationFrame(tick);
+
+      items.forEach((item, idx) => {
+        item.addEventListener('mouseenter', () => {
+          active = idx;
+          started = null;
+          progress.style.width = '0%';
+          paint(active);
+        });
+      });
     })();
 
   </script>
