@@ -23,6 +23,7 @@
       background: var(--bg);
       line-height: 1.6;
       letter-spacing: -0.01em;
+      overflow-x: hidden;
     }
 
     .navbar-wrap {
